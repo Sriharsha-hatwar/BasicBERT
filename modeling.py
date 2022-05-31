@@ -420,7 +420,9 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         self.MIP_linear = nn.Linear(config.hidden_size * 2, args.classifier_hidden)
         self._init_weights(self.SPV_linear)
         self._init_weights(self.MIP_linear)
+        self.Basic_feature = nn.Linear(config.hidden_size * 2, config.hidden_size)
         self.Basic_linear = nn.Linear(config.hidden_size, self.basic_hidden_size)
+        self._init_weights(self.Basic_feature)
         self._init_weights(self.Basic_linear)
 
         self.logsoftmax = nn.LogSoftmax(dim=1)
@@ -514,9 +516,10 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
 
         basic_target = basic_target.mean(1)
         con_target = con_target.mean(1)
-        basic_MIP_hidden = basic_target - con_target
-        basic_MIP_hidden = self.dropout(basic_MIP_hidden)
+        basic_MIP_hidden = self.dropout(torch.cat([basic_target, con_target], dim=1))
+        basic_MIP_hidden = self.SPV_linear(basic_MIP_hidden)
 
+        basic_MIP_hidden = self.dropout(basic_MIP_hidden)
         basic_hidden = self.Basic_linear(basic_MIP_hidden)
         '''
         print(basic_MIP_hidden.shape)
