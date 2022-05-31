@@ -414,14 +414,17 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         self.config = config
         self.dropout = nn.Dropout(args.drop_ratio)
         self.args = args
+        self.basic_hidden_size = int(config.hidden_size/2)
 
         self.SPV_linear = nn.Linear(config.hidden_size * 2, args.classifier_hidden)
         self.MIP_linear = nn.Linear(config.hidden_size * 2, args.classifier_hidden)
-        self.classifier = nn.Linear(args.classifier_hidden * 2 + config.hidden_size, num_labels)
         self._init_weights(self.SPV_linear)
         self._init_weights(self.MIP_linear)
+        self.Basic_linear = nn.Linear(config.hidden_size, self.basic_hidden_size)
+        self._init_weights(self.Basic_linear)
 
         self.logsoftmax = nn.LogSoftmax(dim=1)
+        self.classifier = nn.Linear(args.classifier_hidden * 2 + self.basic_hidden_size, num_labels)
         self._init_weights(self.classifier)
 
     def _init_weights(self, module):
@@ -512,7 +515,9 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         basic_target = basic_target.mean(1)
         con_target = con_target.mean(1)
         basic_MIP_hidden = basic_target - con_target
+        basic_MIP_hidden = self.dropout(basic_MIP_hidden)
 
+        basic_hidden = self.Basic_linear(basic_MIP_hidden)
         '''
         print(basic_MIP_hidden.shape)
         print(SPV_hidden.shape)
@@ -520,7 +525,7 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         '''
         ################################################################################
 
-        logits = self.classifier(self.dropout(torch.cat([SPV_hidden, MIP_hidden, basic_MIP_hidden], dim=1)))
+        logits = self.classifier(self.dropout(torch.cat([SPV_hidden, MIP_hidden, basic_hidden], dim=1)))
         logits = self.logsoftmax(logits)
 
         if labels is not None:
