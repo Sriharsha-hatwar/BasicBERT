@@ -358,7 +358,6 @@ def run_train(
                 #logger.info(f'label_ids shape: {label_ids.shape}')
                 
                 loss = loss_fct(logits.view(-1, args.num_labels), label_ids.view(-1))
-                logger.info(f'loss shape: {loss}')
 
             # average loss if on multi-gpu.
             if args.n_gpu > 1:
@@ -377,14 +376,14 @@ def run_train(
             ##########################################################
             log_loss += loss.item()
             step += 1
-            if step%1000 == 0:
+            if step%500 == 0:
                 all_guids, eval_dataloader = load_test_data(
                     args, logger, processor, task_name, label_list, tokenizer, output_mode, k
                 )
                 eval_loss = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_loss=True)
                 val_loss.append(eval_loss)
                 train_loss.append(log_loss/500)
-                logger.info(f'Train loss for 1000 steps: {log_loss}')
+                logger.info(f'Train loss for 500 steps: {log_loss}')
                 log_loss=0
             ##########################################################
         cur_lr = optimizer.param_groups[0]["lr"]
