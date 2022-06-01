@@ -414,14 +414,14 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         self.config = config
         self.dropout = nn.Dropout(args.drop_ratio)
         self.args = args
-        self.basic_hidden_size = config.hidden_size
+        self.basic_hidden_size = int(config.hidden_size/2)
 
         self.SPV_linear = nn.Linear(config.hidden_size * 2, args.classifier_hidden)
         self.MIP_linear = nn.Linear(config.hidden_size * 2, args.classifier_hidden)
         self._init_weights(self.SPV_linear)
         self._init_weights(self.MIP_linear)
         #self.Basic_feature = nn.Linear(config.hidden_size * 2, config.hidden_size)
-        self.Basic_linear = nn.Linear(config.hidden_size*2, self.basic_hidden_size)
+        self.Basic_linear = nn.Linear(config.hidden_size, self.basic_hidden_size)
         #self._init_weights(self.Basic_feature)
         self._init_weights(self.Basic_linear)
 
@@ -516,7 +516,8 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
 
         basic_target = basic_target.mean(1)
         con_target = con_target.mean(1)
-        basic_MIP_hidden = self.dropout(torch.cat([basic_target, con_target], dim=1))
+        basic_MIP_hidden = torch.abs(basic_target - con_target)
+        #basic_MIP_hidden = self.dropout(torch.cat([basic_target, con_target], dim=1))
         #basic_MIP_hidden = self.SPV_linear(basic_MIP_hidden)
 
         #basic_MIP_hidden = self.dropout(basic_MIP_hidden)
