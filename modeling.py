@@ -510,10 +510,12 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         
         basic_out = self.dropout(basic_out[0])
         con_out = self.dropout(con_out[0])
-        
+
         basic_target = basic_out * basic_mask.unsqueeze(2)
         con_target = con_out * target_mask.unsqueeze(2)
-
+        
+        basic_target = basic_target.view([con_target.shape[0],4,con_target.shape[1], con_target.shape[2]])
+        basic_target = basic_target.mean(2)
         basic_target = basic_target.mean(1)
         con_target = con_target.mean(1)
         basic_MIP_hidden = torch.abs(basic_target - con_target)
