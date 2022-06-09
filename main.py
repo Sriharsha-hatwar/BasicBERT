@@ -298,6 +298,10 @@ def run_train(
     total_step = 0
     for epoch in trange(int(args.num_train_epoch), desc="Epoch"):
         tr_loss = 0
+
+        train_dataloader = load_train_data(
+                args, logger, processor, task_name, label_list, tokenizer, output_mode
+                )
         for step, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
             # move batch data to gpu
             batch = tuple(t.to(args.device) for t in batch)
@@ -358,7 +362,7 @@ def run_train(
                 #logger.info(f'label_ids shape: {label_ids.shape}')
                 
                 loss = loss_fct(logits.view(-1, args.num_labels), label_ids.view(-1))
-                logger.info(f'train loss: {loss}')
+                #logger.info(f'train loss: {loss}')
                 
             # average loss if on multi-gpu.
             if args.n_gpu > 1:

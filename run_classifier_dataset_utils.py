@@ -526,11 +526,20 @@ def convert_examples_to_two_features(
 ):
     """Loads a data file into a list of `InputBatch`s."""
     label_map = {label: i for i, label in enumerate(label_list)}
-    raw_data = _load_data('data/VUA20/train.tsv')
+    raw_data = _load_data('data/VUA18/train.tsv')
     basic = target_extract(raw_data['train'])
     basicer = DefaultBasic()
+    balance_count=0
 
     features = []
+    unfind_basic=0
+    for (ex_index, example) in enumerate(examples):
+        if label_map[example.label] == 0 and len(examples)>100000:
+            rand_num = random.random()
+            if rand_num < 0.4:
+                balance_count+=1
+                #continue
+
     for (ex_index, example) in enumerate(examples):
         if ex_index % 10000 == 0:
             logger.info("Writing example %d of %d" % (ex_index, len(examples)))
@@ -667,16 +676,19 @@ def convert_examples_to_two_features(
         outlog_basic=0
         target = example.text_a.split()
         target = target[int(example.text_b)]
+        #target = re.sub(r'[,.?();!:]','',target)
         if target in basic.keys():
             rand = random.randint(1,len(basic[target]['sam']))-1
             basic_sen, basic_idx = basic[target]['sam'][rand]
             outlog_basic = 0
         else:
+            target = re.sub(r'[,.?();!:]','',target)
             basic_sen, basic_idx = basicer(target)
             if basic_sen == None:
                 basic_sen = example.text_a
                 basic_idx = example.text_b
             else:
+                unfind_basic+=1
                 basic_sen = ' '.join(basic_sen)
         
         
@@ -760,7 +772,7 @@ def convert_examples_to_two_features(
         try:
             tokens_b += 1  # add 1 to the target word index considering [CLS]
             for i in range(len(text_b)):
-                segment_ids[tokens_b + i] = 1
+                segment_ids[tokens_b+i] = 1
         except TypeError:
             pass
 
@@ -797,6 +809,8 @@ def convert_examples_to_two_features(
                 _segment_ids=segment_ids
             )
         )
+    print(f'unfind_basic : {unfind_basic}')
+    print(f'balance num: {balance_count}')
 
     return features
 
