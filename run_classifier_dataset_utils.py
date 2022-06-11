@@ -526,7 +526,7 @@ def convert_examples_to_two_features(
 ):
     """Loads a data file into a list of `InputBatch`s."""
     label_map = {label: i for i, label in enumerate(label_list)}
-    raw_data = _load_data('data/VUA18/train.tsv')
+    raw_data = _load_data('data/VUA20/train.tsv')
     basic = target_extract(raw_data['train'])
     basicer = DefaultBasic()
     balance_count=0
@@ -677,7 +677,8 @@ def convert_examples_to_two_features(
         target = example.text_a.split()
         target = target[int(example.text_b)]
         #target = re.sub(r'[,.?();!:]','',target)
-        if target in basic.keys():
+        #if target in basic.keys():
+        if None:
             rand = random.randint(1,len(basic[target]['sam']))-1
             basic_sen, basic_idx = basic[target]['sam'][rand]
             outlog_basic = 0
@@ -771,8 +772,9 @@ def convert_examples_to_two_features(
 
         try:
             tokens_b += 1  # add 1 to the target word index considering [CLS]
-            for i in range(len(text_b)):
-                segment_ids[tokens_b+i] = 1
+            #for i in range(len(text_b)):
+                #segment_ids[tokens_b+i] = 1
+            segment_ids[tokens] = 1
         except TypeError:
             pass
 
