@@ -510,7 +510,7 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
     if return_loss:
         return eval_loss
 
-    save_preds_npy(preds, out_label_ids)
+    save_preds_npy(args, preds, out_label_ids)
 
     # compute metrics
     result = compute_metrics(preds, out_label_ids)
@@ -523,10 +523,12 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
     return result
 
 
-def save_preds_npy(preds, labels):
-    path = 'preds.npy'
+def save_preds_npy(args, preds, labels):
+    #path = 'preds.npy'
+    path = os.path.join(args.log_dir, 'preds.npy')
     np.save(path, preds)
-    path = 'labels.npy'
+    #path = 'labels.npy'
+    path = os.path.join(args.log_dir, 'labels.npy')
     np.save(path, labels)
 
 def load_pretrained_model(args):
