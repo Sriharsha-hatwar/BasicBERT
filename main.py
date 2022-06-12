@@ -5,7 +5,7 @@ import random
 import copy
 import numpy as np
 import json
-os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
+#os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
 import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
@@ -81,10 +81,10 @@ def main():
     args.log_dir = log_dir
 
     # set CUDA devices
-    os.environ["CUDA_VISIBLE_DEVICES"] = '1'
+    #os.environ["CUDA_VISIBLE_DEVICES"] = '1'
     device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
-    #args.n_gpu = torch.cuda.device_count()
-    args.n_gpu = 0
+    args.n_gpu = torch.cuda.device_count()
+    #args.n_gpu = 0
     args.device = device
 
     logger.info("device: {} n_gpu: {}".format(device, args.n_gpu))

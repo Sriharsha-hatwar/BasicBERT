@@ -677,15 +677,16 @@ def convert_examples_to_two_features(
         target = example.text_a.split()
         target = target[int(example.text_b)]
         #target = re.sub(r'[,.?();!:]','',target)
-        #if target in basic.keys():
-        if None:
+        if target in basic.keys():
+        #if None:
             rand = random.randint(1,len(basic[target]['sam']))-1
             basic_sen, basic_idx = basic[target]['sam'][rand]
             outlog_basic = 0
         else:
             target = re.sub(r'[,.?();!:]','',target)
             basic_sen, basic_idx = basicer(target)
-            if basic_sen == None:
+            #if basic_sen == None:
+            if True:
                 basic_sen = example.text_a
                 basic_idx = example.text_b
             else:
