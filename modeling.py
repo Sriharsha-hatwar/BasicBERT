@@ -415,6 +415,7 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         self.dropout = nn.Dropout(args.drop_ratio)
         self.args = args
         self.basic_hidden_size = int(config.hidden_size)
+        self.cos = nn.CosineSimilarity(dim=1)
 
         self.SPV_linear = nn.Linear(config.hidden_size * 2, args.classifier_hidden)
         self.MIP_linear = nn.Linear(config.hidden_size * 2, args.classifier_hidden)
@@ -519,6 +520,8 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
 
         basic_target = basic_target.mean(1)
         con_target = con_target.mean(1)
+        #print('origin shape', target_output.shape)
+        #print('basic shape', basic_target.shape)
         basic_MIP_hidden = torch.cat([basic_target, con_target], dim=1)
         #basic_MIP_hidden = basic_target-con_target
         basic_MIP_hidden = self.dropout(basic_MIP_hidden)
@@ -539,5 +542,10 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
             loss_fct = nn.NLLLoss()
             loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
             return loss
+
+        if self.args.out_cos:
+            mip_cos = self.cos(target_output_2, target_output)
+            bmip_cos = self.cos(basic_target, con_target)
+            return logits, mip_cos, bmip_cos
         
         return logits

@@ -78,6 +78,29 @@ def find_unknown(data, pred, label):
     
     return 0
 
+def know_meta_save(data, raw_test):
+    basic = target_extract(data['train'])
+
+    know_meta = []
+    know_liter = []
+
+    for i, sample in enumerate(data['test']):
+        target = sample[0]
+        sentence = sample[1]
+        index = sample[2]
+        label = sample[3]
+        
+        outlog_basic=0
+        target = sentence.split()
+        target = target[int(index)]
+        if target in basic.keys():
+            if label == 1:
+                know_meta.append(raw_test[i])
+            else:
+                know_liter.append(raw_test[i])
+    save_tsv(know_meta, '../data/VUA20/meta_test.tsv', ['index', 'label', 'sentence','pos','fgpos','w_index'])
+    save_tsv(know_liter, '../data/VUA20/liter_test.tsv', ['index', 'label', 'sentence','pos','fgpos','w_index'])
+
 def add_numpy(nlist, elem):
     if len(nlist) == 0:
         nlist.append(elem)
@@ -237,6 +260,7 @@ def main():
 
     find_unknown(data, mel_pred, mel_label)
     find_unknown(data, basic_pred, basic_label)
+    know_meta_save(data, raw_test)
     
 if __name__ == '__main__':
      main()

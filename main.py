@@ -423,6 +423,8 @@ def run_train(
 def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_preds=False, return_loss=False):
     model.eval()
 
+    mip_cos = []
+    bmip_cos = []
     eval_loss = 0
     nb_eval_steps = 0
     preds = []
@@ -475,19 +477,36 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
                     )
 
             elif args.model_type in ["MELBERT_MIP", "MELBERT"]:
-                logits = model(
-                    input_ids,
-                    input_ids_2,
-                    target_mask=(segment_ids == 1),
-                    target_mask_2=segment_ids_2,
-                    attention_mask_2=input_mask_2,
-                    token_type_ids=segment_ids,
-                    attention_mask=input_mask,
-                    basic_ids=_input_ids,
-                    basic_mask=(_segment_ids==1),
-                    basic_attention=_input_mask,
-                    basic_token_type_ids=_segment_ids,
-                )
+                if args.out_cos: 
+                    logits, cos0, cos1 = model(
+                        input_ids,
+                        input_ids_2,
+                        target_mask=(segment_ids == 1),
+                        target_mask_2=segment_ids_2,
+                        attention_mask_2=input_mask_2,
+                        token_type_ids=segment_ids,
+                        attention_mask=input_mask,
+                        basic_ids=_input_ids,
+                        basic_mask=(_segment_ids==1),
+                        basic_attention=_input_mask,
+                        basic_token_type_ids=_segment_ids,
+                    )
+                    mip_cos = add_cos(mip_cos, cos0)
+                    bmip_cos = add_cos(bmip_cos, cos1)
+                else:
+                    logits = model(
+                        input_ids,
+                        input_ids_2,
+                        target_mask=(segment_ids == 1),
+                        target_mask_2=segment_ids_2,
+                        attention_mask_2=input_mask_2,
+                        token_type_ids=segment_ids,
+                        attention_mask=input_mask,
+                        basic_ids=_input_ids,
+                        basic_mask=(_segment_ids==1),
+                        basic_attention=_input_mask,
+                        basic_token_type_ids=_segment_ids,
+                    )
                 loss_fct = nn.NLLLoss()
                 tmp_eval_loss = loss_fct(logits.view(-1, args.num_labels), label_ids.view(-1))
                 eval_loss += tmp_eval_loss.mean().item()
@@ -518,10 +537,26 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
     for key in sorted(result.keys()):
         logger.info(f"  {key} = {str(result[key])}")
 
+    logger.info('out cos similarity!')
+    calcu_cos(mip_cos, bmip_cos)
+
     if return_preds:
         return preds
     return result
 
+def add_cos(list_, cos):
+    if len(list_) == 0:
+        list_.append(cos.detach().cpu().numpy())
+    else:
+        list_[0] = np.append(list_[0], cos.detach().cpu().numpy())
+    return list_
+
+def calcu_cos(mip_cos, bmip_cos):
+    m_mean = np.mean(mip_cos[0])
+    bm_mean = np.mean(bmip_cos[0])
+    print(f'mip cos mean: {m_mean}; bmip cos mean: {bm_mean}')
+    print(f'{len(mip_cos[0])}, {len(bmip_cos[0])}')
+    print(mip_cos[0], bmip_cos[0])
 
 def save_preds_npy(args, preds, labels):
     #path = 'preds.npy'

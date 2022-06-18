@@ -775,7 +775,7 @@ def convert_examples_to_two_features(
             tokens_b += 1  # add 1 to the target word index considering [CLS]
             #for i in range(len(text_b)):
                 #segment_ids[tokens_b+i] = 1
-            segment_ids[tokens] = 1
+            segment_ids[tokens_b] = 1
         except TypeError:
             pass
 
