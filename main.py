@@ -81,8 +81,10 @@ def main():
     args.log_dir = log_dir
 
     # set CUDA devices
+    #os.environ["CUDA_VISIBLE_DEVICES"] = '1'
     device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
     args.n_gpu = torch.cuda.device_count()
+    #args.n_gpu = 0
     args.device = device
 
     logger.info("device: {} n_gpu: {}".format(device, args.n_gpu))
@@ -300,6 +302,8 @@ def run_train(
     total_step = 0
     for epoch in trange(int(args.num_train_epoch), desc="Epoch"):
         tr_loss = 0
+
+        #train_dataloader = load_train_data(args, logger, processor, task_name, label_list, tokenizer, output_mode)
         for step, batch in enumerate(tqdm(train_dataloader, desc="Iteration")):
             # move batch data to gpu
             batch = tuple(t.to(args.device) for t in batch)
@@ -360,7 +364,7 @@ def run_train(
                 #logger.info(f'label_ids shape: {label_ids.shape}')
                 
                 loss = loss_fct(logits.view(-1, args.num_labels), label_ids.view(-1))
-                logger.info(f'train loss: {loss}')
+                #logger.info(f'train loss: {loss}')
                 
             # average loss if on multi-gpu.
             if args.n_gpu > 1:
@@ -380,12 +384,14 @@ def run_train(
             log_loss += loss.item()
             step += 1
             if step%2000 == 0:
+                '''
                 all_guids, eval_dataloader = load_test_data(
                     args, logger, processor, task_name, label_list, tokenizer, output_mode, k
                 )
                 eval_loss = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_loss=True)
                 val_loss.append(eval_loss)
                 train_loss.append(log_loss/2000)
+                '''
                 logger.info(f'Train loss for 2000 steps: {log_loss}')
                 log_loss=0
             ##########################################################
@@ -506,6 +512,8 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
     if return_loss:
         return eval_loss
 
+    save_preds_npy(args, preds, out_label_ids)
+
     # compute metrics
     result = compute_metrics(preds, out_label_ids)
 
@@ -516,6 +524,14 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
         return preds
     return result
 
+
+def save_preds_npy(args, preds, labels):
+    #path = 'preds.npy'
+    path = os.path.join(args.log_dir, 'preds.npy')
+    np.save(path, preds)
+    #path = 'labels.npy'
+    path = os.path.join(args.log_dir, 'labels.npy')
+    np.save(path, labels)
 
 def load_pretrained_model(args):
     # Pretrained Model
