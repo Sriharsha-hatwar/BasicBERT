@@ -150,11 +150,9 @@ def main():
 
     # VUA18 / VUA20
     if args.do_train and args.task_name == "vua":
-        print('******************** 1 ******************')
         train_dataloader = load_train_data(
             args, logger, processor, task_name, label_list, tokenizer, output_mode
         )
-        print('******************** 2 *******************')
         model, best_result = run_train(
             args,
             logger,
@@ -355,7 +353,7 @@ def run_train(
                     token_type_ids=segment_ids,
                     attention_mask=input_mask,
                     basic_ids=_input_ids,
-                    basic_mask=_segment_ids,
+                    basic_mask=(_segment_ids==1),
                     basic_attention=_input_mask,
                     basic_token_type_ids=_segment_ids,
                 )

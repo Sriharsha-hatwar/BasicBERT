@@ -420,13 +420,7 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         self.MIP_linear = nn.Linear(config.hidden_size * 2, args.classifier_hidden)
         self._init_weights(self.SPV_linear)
         self._init_weights(self.MIP_linear)
-<<<<<<< HEAD
-        #self.Basic_feature = nn.Linear(config.hidden_size * 2, config.hidden_size)
-        self.Basic_linear = nn.Linear(config.hidden_size, self.basic_hidden_size)
-        #self._init_weights(self.Basic_feature)
-=======
         self.Basic_linear = nn.Linear(config.hidden_size * 2, self.basic_hidden_size)
->>>>>>> 73.3
         self._init_weights(self.Basic_linear)
 
         self.logsoftmax = nn.LogSoftmax(dim=1)
@@ -519,25 +513,16 @@ class AutoModelForSequenceClassification_SPV_MIP(nn.Module):
         
         basic_out = self.dropout(basic_out[0])
         con_out = self.dropout(con_out[0])
-
+        
         basic_target = basic_out * basic_mask.unsqueeze(2)
         con_target = con_out * target_mask.unsqueeze(2)
-        
-        basic_target = basic_target.view([con_target.shape[0],4,con_target.shape[1], con_target.shape[2]])
-        basic_target = basic_target.mean(2)
+
         basic_target = basic_target.mean(1)
         con_target = con_target.mean(1)
-<<<<<<< HEAD
-        basic_MIP_hidden = torch.abs(basic_target - con_target)
-        #basic_MIP_hidden = self.dropout(torch.cat([basic_target, con_target], dim=1))
-        #basic_MIP_hidden = self.SPV_linear(basic_MIP_hidden)
-=======
         basic_MIP_hidden = torch.cat([basic_target, con_target], dim=1)
         #basic_MIP_hidden = basic_target-con_target
         basic_MIP_hidden = self.dropout(basic_MIP_hidden)
->>>>>>> 73.3
 
-        #basic_MIP_hidden = self.dropout(basic_MIP_hidden)
         basic_hidden = self.Basic_linear(basic_MIP_hidden)
         '''
         print(basic_MIP_hidden.shape)
