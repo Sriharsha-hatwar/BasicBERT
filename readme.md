@@ -6,7 +6,7 @@ BasicBERT is a novel metaphor identification mechanism that leverages the Metaph
 
 ## Run
 
-We're preparing our code and pre-trained models. Will be ready soon. In the mean time, you could check out our work at [EACL 2023](https://github.com/liyucheng09/MetaphorFrame), where we provide a ready-to-use model that can be easily applied on your own data.
+We're preparing our code and pre-trained models. Will be ready soon. In the mean time, you could check out our work at [EACL 2023](https://github.com/liyucheng09/MetaphorFrame), where we provide a ready-to-use metaphor detection model that can be easily applied on your own data.
 
 ## License
 
