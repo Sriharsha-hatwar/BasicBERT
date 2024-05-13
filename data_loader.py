@@ -9,18 +9,19 @@ from run_classifier_dataset_utils import (
     convert_examples_to_two_features,
     convert_examples_to_features,
     convert_two_examples_to_features,
+    convert_examples_to_mod_spv_features
 )
 
 
 def load_train_data(args, logger, processor, task_name, label_list, tokenizer, output_mode, k=None):
     # Prepare data loader
-    if task_name == "vua":
+    if task_name == "vua" or task_name == "vuaextended":
         train_examples = processor.get_train_examples(args.data_dir)
     elif task_name == "trofi":
         train_examples = processor.get_train_examples(args.data_dir, k)
     else:
-        raise ("task_name should be 'vua' or 'trofi'!")
-
+        raise ("task_name should be 'vua', 'vuaextended' or 'trofi'!")
+    print("This first step is done..")
     # make features file
     if args.model_type == "BERT_BASE":
         train_features = convert_two_examples_to_features(
@@ -31,8 +32,14 @@ def load_train_data(args, logger, processor, task_name, label_list, tokenizer, o
             train_examples, label_list, args.max_seq_length, tokenizer, output_mode, args
         )
     if args.model_type in ["MELBERT_MIP", "MELBERT"]:
+        print("Converting to MELBERT features..")
         train_features = convert_examples_to_two_features(
             train_examples, label_list, args.max_seq_length, tokenizer, output_mode, args
+        )
+    if args.model_type in ["SPV_MODIFIED"] : 
+        print("Converting to MELBERT MOD SPV features")
+        train_features = convert_examples_to_mod_spv_features(
+            train_examples, label_list, args.max_seq_length, tokenizer, output_mode, args, False
         )
 
     # make features into tensor
@@ -72,6 +79,9 @@ def load_train_data(args, logger, processor, task_name, label_list, tokenizer, o
         print(f'_input_mask : {all_basic_mask}')
         print(f'_segment_ids : {segment_ids}')
         '''
+    elif args.model_type in ["SPV_MODIFIED"]:
+        all_input_ids_2 = torch.tensor([f.input_ids_2 for f in train_features], dtype=torch.long)
+        train_data = TensorDataset(all_input_ids, all_input_ids_2, all_input_mask, all_segment_ids, all_label_ids)
     else:
         train_data = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids)
     train_sampler = RandomSampler(train_data)
@@ -136,7 +146,7 @@ def load_train_data_kf(
 
 
 def load_test_data(args, logger, processor, task_name, label_list, tokenizer, output_mode, k=None):
-    if task_name == "vua":
+    if task_name == "vua" or task_name == "vuaextended":
         eval_examples = processor.get_test_examples(args.data_dir)
     elif task_name == "trofi":
         eval_examples = processor.get_test_examples(args.data_dir, k)
@@ -154,6 +164,10 @@ def load_test_data(args, logger, processor, task_name, label_list, tokenizer, ou
     if args.model_type in ["MELBERT_MIP", "MELBERT"]:
         eval_features = convert_examples_to_two_features(
             eval_examples, label_list, args.max_seq_length, tokenizer, output_mode, args
+        )
+    if args.model_type in ["SPV_MODIFIED"]:
+        eval_features = convert_examples_to_mod_spv_features(
+            eval_examples, label_list, args.max_seq_length, tokenizer, output_mode, args, True
         )
 
     logger.info("***** Running evaluation *****")
@@ -182,6 +196,17 @@ def load_test_data(args, logger, processor, task_name, label_list, tokenizer, ou
             all_basic_ids,
             all_basic_mask,
             all_basic_segment,
+        )
+    elif args.model_type in ["SPV_MODIFIED"]:
+        all_input_ids = torch.tensor([f.input_ids for f in eval_features], dtype=torch.long)
+        all_input_mask = torch.tensor([f.input_mask for f in eval_features], dtype=torch.long)
+        all_segment_ids = torch.tensor([f.segment_ids for f in eval_features], dtype=torch.long)
+        all_label_ids = torch.tensor([f.label_id for f in eval_features], dtype=torch.long)
+        all_input_ids_2 = torch.tensor([f.input_ids_2 for f in eval_features], dtype=torch.long)
+        all_guids = [f.guid for f in eval_features]
+        all_idx = torch.tensor([i for i in range(len(eval_features))], dtype=torch.long)
+        eval_data = TensorDataset(
+            all_input_ids, all_input_ids_2, all_input_mask, all_segment_ids, all_label_ids, all_idx
         )
     else:
         all_input_ids = torch.tensor([f.input_ids for f in eval_features], dtype=torch.long)

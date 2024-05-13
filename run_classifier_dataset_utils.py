@@ -34,6 +34,7 @@ from sklearn.metrics import (
 import random
 import nltk
 from nltk.corpus import wordnet
+import pickle
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +52,7 @@ class InputExample(object):
         FGPOS=None,
         text_a_2=None,
         text_b_2=None,
+        text_c=None
     ):
         """Constructs a InputExample.
 
@@ -71,6 +73,7 @@ class InputExample(object):
         self.FGPOS = FGPOS
         self.text_a_2 = text_a_2
         self.text_b_2 = text_b_2
+        self.text_c = text_c
 
 
 class InputFeatures(object):
@@ -267,6 +270,190 @@ class VUAProcessor(DataProcessor):
                 )
         return examples
 
+class VUAProcessorExtended(DataProcessor):
+    """Processor for the VUA data set."""
+
+    def get_train_examples(self, data_dir):
+        """See base class."""
+        #print("######### - Testing ##########")
+        return self._create_examples(self._read_tsv(os.path.join(data_dir, "new-train.tsv")), "train")
+
+    def get_test_examples(self, data_dir):
+        """See base class."""
+        return self._create_examples(self._read_tsv(os.path.join(data_dir, "new-test.tsv")), "test")
+
+    def get_dev_examples(self, data_dir):
+        """See base class."""
+        return self._create_examples(self._read_tsv(os.path.join(data_dir, "dev.tsv")), "dev")
+
+    def get_labels(self):
+        """See base class."""
+        return ["0", "1"]
+
+    def _create_examples(self, lines, set_type):
+        """Creates examples for the training and dev sets."""
+        examples = []
+        for (i, line) in enumerate(lines):
+            if i == 0:
+                continue
+            #print("DEBUGGING : ", line)
+            guid = "%s-%s" % (set_type, line[0])
+            text_a = line[2]
+            label = line[1]
+            POS = line[3]
+            FGPOS = line[4]
+            text_b = line[5]
+            text_c = line[6]
+            examples.append(
+                    InputExample(
+                        guid=guid, text_a=text_a, text_b=text_b, text_c=text_c, label=label, POS=POS, FGPOS=FGPOS
+                    )
+                )
+
+        return examples
+
+
+def convert_examples_to_mod_spv_features(
+        examples, label_list, max_seq_length, tokenizer, output_mode, args, is_test=False
+):  
+    # Load if the features exist
+    if not is_test:
+        location = "data/VUA20/train-features.pkl"
+    else:
+        location = "data/VUA20/test-features.pkl"
+    
+    if os.path.exists(location):
+        with open(location, 'rb') as f:
+            pickle_load = pickle.load(f)
+        return pickle_load["features"]
+    else:
+        print("Creating the features manually.")
+
+          
+
+    label_map = {label: i for i, label in enumerate(label_list)}
+
+    features = []
+    for (ex_index, example) in enumerate(examples):
+        #print("Example is : ", example)
+        if ex_index % 10000 == 0:
+            logger.info("Writing example %d of %d" % (ex_index, len(examples)))
+
+        tokens_a = tokenizer.tokenize(example.text_a)  # tokenize the sentence
+        tokens_b = None
+        tokens_c = tokenizer.tokenize(example.text_c) 
+
+        try:
+            text_b = int(example.text_b)  # index of target word
+            tokens_b = text_b
+
+            # truncate the sentence to max_seq_len
+            if len(tokens_a) > max_seq_length - 2:
+                tokens_a = tokens_a[: (max_seq_length - 2)]
+            # truncate the sentence to max_seq_len
+            if len(tokens_c) > max_seq_length - 2:
+                tokens_c = tokens_c[: (max_seq_length - 2)]
+
+            # Find the target word index
+            for i, w in enumerate(example.text_a.split()):
+                # If w is a target word, tokenize the word and save to text_b
+                if i == text_b:
+                    # consider the index due to models that use a byte-level BPE as a tokenizer (e.g., GPT2, RoBERTa)
+                    text_b = tokenizer.tokenize(w) if i == 0 else tokenizer.tokenize(" " + w)
+                    break
+                w_tok = tokenizer.tokenize(w) if i == 0 else tokenizer.tokenize(" " + w)
+
+                # Count number of tokens before the target word to get the target word index
+                if w_tok:
+                    tokens_b += len(w_tok) - 1
+
+        except TypeError:
+            if example.text_b:
+                tokens_b = tokenizer.tokenize(example.text_b)
+                # Modifies `tokens_a` and `tokens_b` in place so that the total
+                # length is less than the specified length.
+                # Account for [CLS], [SEP], [SEP] with "- 3"
+                _truncate_seq_pair(tokens_a, tokens_b, max_seq_length - 3)
+            else:
+                # Account for [CLS] and [SEP] with "- 2"
+                if len(tokens_a) > max_seq_length - 2:
+                    tokens_a = tokens_a[: (max_seq_length - 2)]
+
+        tokens = [tokenizer.cls_token] + tokens_a + [tokenizer.sep_token]
+
+        tokens_c = [tokenizer.cls_token] + tokens_c + [tokenizer.sep_token]
+
+        segment_ids = [0] * len(tokens)
+        input_ids = tokenizer.convert_tokens_to_ids(tokens)
+        input_ids_c = tokenizer.convert_tokens_to_ids(tokens_c)
+
+        # set the target word as 1 in segment ids
+        try:
+            tokens_b += 1  # add 1 to the target word index considering [CLS]
+            for i in range(len(text_b)):
+                segment_ids[tokens_b + i] = 1
+        except TypeError:
+            pass
+
+        # The mask has 1 for real tokens and 0 for padding tokens. Only real
+        # tokens are attended to.
+        input_mask = [1] * len(input_ids)
+        input_mask_c = [1] * len(input_ids_c)
+
+        # Zero-pad up to the sequence length.
+        padding = [tokenizer.convert_tokens_to_ids(tokenizer.pad_token)] * (
+            max_seq_length - len(input_ids)
+        )
+
+        padding_c = [tokenizer.convert_tokens_to_ids(tokenizer.pad_token)] * (
+            max_seq_length - len(input_ids_c)
+        )
+
+        input_ids += padding
+        input_ids_c += padding_c
+
+        input_mask += [0] * len(padding)
+        input_mask_c += [0] * len(padding_c)
+        segment_ids += [0] * len(padding)
+
+        assert len(input_ids) == max_seq_length
+        assert len(input_mask) == max_seq_length
+        assert len(input_mask_c) == max_seq_length
+        assert len(segment_ids) == max_seq_length
+
+        if output_mode == "classification":
+            label_id = label_map[example.label]
+        else:
+            raise KeyError(output_mode)
+
+        if ex_index < 5:
+            logger.info("*** Example ***")
+            logger.info("guid: %s" % (example.guid))
+            logger.info("tokens: %s" % " ".join([str(x) for x in tokens]))
+            logger.info("input_ids: %s" % " ".join([str(x) for x in input_ids]))
+            logger.info("input_mask: %s" % " ".join([str(x) for x in input_mask]))
+            logger.info("segment_ids: %s" % " ".join([str(x) for x in segment_ids]))
+            logger.info("label: %s (id = %s)" % (example.label, str(label_id)))
+
+        features.append(
+            InputFeatures(
+                input_ids=input_ids,
+                input_ids_2=input_ids_c,
+                input_mask=input_mask,
+                segment_ids=segment_ids,
+                label_id=label_id,
+                guid=example.guid + " " + str(example.text_b),
+            )
+        )
+    # Save the features as pickle file if it does not exist.
+    if not os.path.exists(location): 
+        some_dict = {}
+        some_dict["features"] = features
+        with open(location, 'wb') as f:
+            pickle.dump(some_dict, f)
+        print("Dumping pickle.")
+
+    return features
 
 def convert_examples_to_features(
     examples, label_list, max_seq_length, tokenizer, output_mode, args
@@ -512,9 +699,11 @@ def _read_vua(file_path, no_fgpos=None):
             else:
                 ind = line[5]
             label = line[1]
-
-            index = int(ind)
-            word = sentence.split()[index]
+            try:
+                index = int(ind)
+                word = sentence.split()[index]
+            except:
+                print("Line is : ", line)
 
             dataset.append([word, sentence, index, label, pos])
     print(file_path, len(dataset))
@@ -975,12 +1164,15 @@ def compute_metrics(preds, labels):
 processors = {
     "vua": VUAProcessor,
     "trofi": TrofiProcessor,
+    "vuaextended" : VUAProcessorExtended
 }
 
 output_modes = {
     "vua": "classification",
     "trofi": "classification",
+    "vuaextended" : "classification"
 }
+
 import os
 
 import numpy as np

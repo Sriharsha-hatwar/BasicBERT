@@ -22,6 +22,7 @@ from modeling import (
     AutoModelForSequenceClassification_SPV,
     AutoModelForSequenceClassification_MIP,
     AutoModelForSequenceClassification_SPV_MIP,
+    AutoModelForSequenceClassification_MOD_SPV,
 )
 from run_classifier_dataset_utils import processors, output_modes, compute_metrics
 from data_loader import load_train_data, load_train_data_kf, load_test_data
@@ -106,7 +107,7 @@ def main():
     # build tokenizer and model
     tokenizer = AutoTokenizer.from_pretrained(args.bert_model, do_lower_case=args.do_lower_case)
     model = load_pretrained_model(args)
-
+    print("Model loaded.")
     ########### Training ###########
 
     # VUA18 / VUA20 for bagging 
@@ -149,10 +150,12 @@ def main():
 
 
     # VUA18 / VUA20
-    if args.do_train and args.task_name == "vua":
+    if args.do_train and (args.task_name == "vua" or args.task_name == "vuaextended"):
+        print("Loading train_data..")
         train_dataloader = load_train_data(
             args, logger, processor, task_name, label_list, tokenizer, output_mode
         )
+        print("starting training..")
         model, best_result = run_train(
             args,
             logger,
@@ -205,6 +208,7 @@ def main():
     ########### Inference ###########
     # VUA18 / VUA20
     if (args.do_eval or args.do_test) and task_name == "vua":
+        print("WIll it come here?")
         # if test data is genre or POS tag data
         if ("genre" in args.data_dir) or ("pos" in args.data_dir):
             if "genre" in args.data_dir:
@@ -298,6 +302,7 @@ def run_train(
     val_loss = []
     log_loss = 0
     total_step = 0
+    print("Training..")
     for epoch in trange(int(args.num_train_epoch), desc="Epoch"):
         tr_loss = 0
 
@@ -319,6 +324,8 @@ def run_train(
                     _input_mask,
                     _segment_ids,
                 ) = batch
+            elif args.model_type in ["SPV_MODIFIED"]:
+                input_ids, input_ids_2, input_mask, segment_ids, label_ids = batch
             else:
                 input_ids, input_mask, segment_ids, label_ids = batch
             '''
@@ -343,6 +350,18 @@ def run_train(
                 )
                 loss_fct = nn.NLLLoss(weight=torch.Tensor([1, args.class_weight]).to(args.device))
                 loss = loss_fct(logits.view(-1, args.num_labels), label_ids.view(-1))
+            elif args.model_type in ["SPV_MODIFIED"]:
+                #print("Skipping training..")
+                logits = model(
+                    input_ids,
+                    input_ids_2,
+                    target_mask=(segment_ids == 1),
+                    token_type_ids=segment_ids,
+                    attention_mask=input_mask,
+                )
+                loss_fct = nn.NLLLoss(weight=torch.Tensor([1, args.class_weight]).to(args.device))
+                loss = loss_fct(logits.view(-1, args.num_labels), label_ids.view(-1))
+
             elif args.model_type in ["MELBERT_MIP", "MELBERT"]:
                 logits = model(
                     input_ids,
@@ -381,17 +400,18 @@ def run_train(
             ##########################################################
             log_loss += loss.item()
             step += 1
-            if step%2000 == 0:
-                '''
-                all_guids, eval_dataloader = load_test_data(
-                    args, logger, processor, task_name, label_list, tokenizer, output_mode, k
-                )
-                eval_loss = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_loss=True)
-                val_loss.append(eval_loss)
-                train_loss.append(log_loss/2000)
-                '''
-                logger.info(f'Train loss for 2000 steps: {log_loss}')
-                log_loss=0
+            if step%500 == 0:
+                pass
+                #logger.info(f'Doing eval and saving losses..')
+                # all_guids, eval_dataloader = load_test_data(
+                #     args, logger, processor, task_name, label_list, tokenizer, output_mode, k
+                # )
+                # eval_loss = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_loss=True)
+                # val_loss.append(eval_loss)
+                # train_loss.append(log_loss/500)
+                
+                # logger.info(f'Train loss for 500 steps: {log_loss}')
+                # log_loss=0
             ##########################################################
         cur_lr = optimizer.param_groups[0]["lr"]
         logger.info(f"[epoch {epoch+1}] ,lr: {cur_lr} ,tr_loss: {tr_loss}")
@@ -448,6 +468,8 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
                 _input_mask,
                 _segment_ids,
             ) = eval_batch
+        elif args.model_type in ["SPV_MODIFIED"] : 
+            input_ids, input_ids_2, input_mask, segment_ids, label_ids, idx = eval_batch
         else:
             input_ids, input_mask, segment_ids, label_ids, idx = eval_batch
 
@@ -522,6 +544,29 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
                     out_label_ids = np.append(
                         out_label_ids, label_ids.detach().cpu().numpy(), axis=0
                     )
+            elif args.model_type in ["SPV_MODIFIED"]:
+                logits = model(
+                    input_ids,
+                    input_ids_2, 
+                    target_mask=(segment_ids == 1),
+                    token_type_ids=segment_ids,
+                    attention_mask=input_mask,
+                )
+                loss_fct = nn.NLLLoss()
+                tmp_eval_loss = loss_fct(logits.view(-1, args.num_labels), label_ids.view(-1))
+                eval_loss += tmp_eval_loss.mean().item()
+                nb_eval_steps += 1
+
+                if len(preds) == 0:
+                    preds.append(logits.detach().cpu().numpy())
+                    pred_guids.append([all_guids[i] for i in idx])
+                    out_label_ids = label_ids.detach().cpu().numpy()
+                else:
+                    preds[0] = np.append(preds[0], logits.detach().cpu().numpy(), axis=0)
+                    pred_guids[0].extend([all_guids[i] for i in idx])
+                    out_label_ids = np.append(
+                        out_label_ids, label_ids.detach().cpu().numpy(), axis=0
+                    )
 
     eval_loss = eval_loss / nb_eval_steps
     preds = preds[0]
@@ -538,7 +583,11 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
         logger.info(f"  {key} = {str(result[key])}")
 
     logger.info('out cos similarity!')
-    calcu_cos(mip_cos, bmip_cos)
+
+    if args.out_cos:
+        calcu_cos(mip_cos, bmip_cos)
+    else:
+        logger.info("Not calculating cos similarity.")
 
     if return_preds:
         return preds
@@ -599,10 +648,15 @@ def load_pretrained_model(args):
             args=args, Model=bert, config=config, num_labels=args.num_labels
         )
     if args.model_type == "MELBERT":
-        _model_path = '../../WSCMM/models/senseCL/checkpoint/checkpoint-1200/'
-        basic_encoder = get_model(_model_path)
+        #_model_path = '../../WSCMM/models/senseCL/checkpoint/checkpoint-1200/'
+        #basic_encoder = get_model(_model_path)
         model = AutoModelForSequenceClassification_SPV_MIP(
-            args=args, Model=bert, basic_encoder=basic_encoder, config=config, num_labels=args.num_labels
+            args=args, Model=bert, basic_encoder=None, config=config, num_labels=args.num_labels
+        )
+    if args.model_type == "SPV_MODIFIED":
+        print("Using the modified SPV implementation")
+        model = AutoModelForSequenceClassification_MOD_SPV(
+            args=args, Model=bert, config=config, num_labels=args.num_labels
         )
 
     model.to(args.device)
