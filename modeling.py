@@ -5,7 +5,6 @@ import torch.nn as nn
 from utils import Config
 from transformers import AutoTokenizer, AutoModel
 
-
 class AutoModelForSequenceClassification(nn.Module):
     """Base model for sequence classification"""
 
@@ -140,7 +139,43 @@ class AutoModelForTokenClassification(nn.Module):
             return loss
         return logits
 
+class RoBERTaForMetaphorClassification(nn.Module):
+    """Fine-tuned RoBERTa model for metaphor classification"""
 
+    def __init__(self, num_labels=2):
+        """Initialize the model"""
+        super(RoBERTaForMetaphorClassification, self).__init__()
+        config = RobertaConfig.from_pretrained('roberta-base', num_labels=num_labels)
+        self.roberta = RobertaModel.from_pretrained('roberta-base', config=config)
+        self.dropout = nn.Dropout(config.hidden_dropout_prob)
+        self.classifier = nn.Linear(config.hidden_size, num_labels)
+
+    def forward(
+        self,
+        input_ids,
+        attention_mask=None,
+        labels=None,
+    ):
+        """
+        Inputs:
+            `input_ids`: a torch.LongTensor of shape [batch_size, sequence_length] with the word token indices in the vocabulary
+            `attention_mask`: an optional torch.LongTensor of shape [batch_size, sequence_length] with indices selected in [0, 1].
+                It's a mask to be used if the input sequence length is smaller than the max input sequence length in the current batch.
+                It's the mask that we typically use for attention when a batch has varying length sentences.
+            `labels`: optional labels for the classification output: torch.LongTensor of shape [batch_size]
+                with indices selected in [0, ..., num_labels].
+        """
+        outputs = self.roberta(input_ids, attention_mask=attention_mask)
+        pooled_output = outputs.pooler_output
+        pooled_output = self.dropout(pooled_output)
+        logits = self.classifier(pooled_output)
+
+        if labels is not None:
+            loss_fct = nn.CrossEntropyLoss()
+            loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
+            return loss
+        return logits
+        
 class AutoModelForSequenceClassification_SPV(nn.Module):
     """MelBERT with only SPV"""
 
