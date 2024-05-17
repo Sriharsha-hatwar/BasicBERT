@@ -144,6 +144,12 @@ def load_train_data_kf(
     gkf = StratifiedKFold(n_splits=args.num_bagging).split(X=all_input_ids, y=all_label_ids.numpy())
     return train_data, gkf
 
+def get_sentences_from_examples(examples):
+    # This will be InputExample type.
+    sentences = []
+    for example in examples:
+        sentences.append((example.text_a, example.text_b))
+    return sentences
 
 def load_test_data(args, logger, processor, task_name, label_list, tokenizer, output_mode, k=None):
     if task_name == "vua" or task_name == "vuaextended":
@@ -152,6 +158,11 @@ def load_test_data(args, logger, processor, task_name, label_list, tokenizer, ou
         eval_examples = processor.get_test_examples(args.data_dir, k)
     else:
         raise ("task_name should be 'vua' or 'trofi'!")
+    
+
+    eval_examples_sentences = get_sentences_from_examples(eval_examples)
+
+    print("The number of eval_examples : ", len(eval_examples_sentences))
 
     if args.model_type == "BERT_BASE":
         eval_features = convert_two_examples_to_features(
@@ -223,4 +234,4 @@ def load_test_data(args, logger, processor, task_name, label_list, tokenizer, ou
     eval_sampler = SequentialSampler(eval_data)
     eval_dataloader = DataLoader(eval_data, sampler=eval_sampler, batch_size=args.eval_batch_size)
 
-    return all_guids, eval_dataloader
+    return all_guids, eval_dataloader, eval_examples_sentences

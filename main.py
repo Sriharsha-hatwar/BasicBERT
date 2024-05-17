@@ -9,6 +9,7 @@ import json
 import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from tqdm import tqdm, trange
 from collections import OrderedDict
@@ -130,8 +131,8 @@ def main():
             model, best_result = run_train(args, logger, model, train_dataloader, processor, task_name, label_list, tokenizer, output_mode)
 
             # Test
-            all_guids, eval_dataloader = load_test_data(args, logger, processor, task_name, label_list, tokenizer, output_mode)
-            preds = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_preds=True)
+            all_guids, eval_dataloader, test_examples = load_test_data(args, logger, processor, task_name, label_list, tokenizer, output_mode)
+            preds = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, None, return_preds=True)
             with open(os.path.join(args.data_dir, f"seed{args.seed}_preds_{fold}.p"), "wb") as f:
                 pickle.dump(preds, f)
 
@@ -140,8 +141,8 @@ def main():
             if "VUA20" in args.data_dir:
                 # Verb
                 args.data_dir = "data/VUAverb"
-                all_guids, eval_dataloader = load_test_data(args, logger, processor, task_name, label_list, tokenizer, output_mode)
-                preds = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_preds=True)
+                all_guids, eval_dataloader, test_examples = load_test_data(args, logger, processor, task_name, label_list, tokenizer, output_mode)
+                preds = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, None, return_preds=True)
                 with open(os.path.join(args.data_dir, f"seed{args.seed}_preds_{fold}.p"), "wb") as f:
                     pickle.dump(preds, f)
 
@@ -204,11 +205,15 @@ def main():
     # Load trained model
     if "saves" in args.bert_model:
         model = load_trained_model(args, model, tokenizer)
+    # Adding more info:
+    if not args.do_train and args.do_test:
+        # This means, use a folder, I specify to load the model from. 
+        model = load_from_fine_tuned(args, model, tokenizer)
+        print("Loaded appropriate model.")
 
     ########### Inference ###########
     # VUA18 / VUA20
     if (args.do_eval or args.do_test) and task_name == "vua":
-        print("WIll it come here?")
         # if test data is genre or POS tag data
         if ("genre" in args.data_dir) or ("pos" in args.data_dir):
             if "genre" in args.data_dir:
@@ -219,25 +224,25 @@ def main():
             for idx, target in tqdm(enumerate(targets)):
                 logger.info(f"====================== Evaluating {target} =====================")
                 args.data_dir = os.path.join(orig_data_dir, target)
-                all_guids, eval_dataloader = load_test_data(
+                all_guids, eval_dataloader, test_examples = load_test_data(
                     args, logger, processor, task_name, label_list, tokenizer, output_mode
                 )
-                run_eval(args, logger, model, eval_dataloader, all_guids, task_name)
+                run_eval(args, logger, model, eval_dataloader, all_guids, task_name, test_examples)
         else:
-            all_guids, eval_dataloader = load_test_data(
+            all_guids, eval_dataloader, test_examples = load_test_data(
                 args, logger, processor, task_name, label_list, tokenizer, output_mode
             )
-            run_eval(args, logger, model, eval_dataloader, all_guids, task_name)
+            run_eval(args, logger, model, eval_dataloader, all_guids, task_name, test_examples)
 
     # TroFi / MOH-X (K-fold)
     elif (args.do_eval or args.do_test) and args.task_name == "trofi":
         logger.info(f"***** Evaluating with {args.data_dir}")
         k_result = []
         for k in tqdm(range(10), desc="K-fold"):
-            all_guids, eval_dataloader = load_test_data(
+            all_guids, eval_dataloader, test_examples = load_test_data(
                 args, logger, processor, task_name, label_list, tokenizer, output_mode, k
             )
-            result = run_eval(args, logger, model, eval_dataloader, all_guids, task_name)
+            result = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, None)
             k_result.append(result)
 
         # Calculate average result
@@ -418,10 +423,10 @@ def run_train(
 
         # evaluate
         if args.do_eval:
-            all_guids, eval_dataloader = load_test_data(
+            all_guids, eval_dataloader, test_examples = load_test_data(
                 args, logger, processor, task_name, label_list, tokenizer, output_mode, k
             )
-            result = run_eval(args, logger, model, eval_dataloader, all_guids, task_name)
+            result = run_eval(args, logger, model, eval_dataloader, all_guids, task_name, None)
 
             # update
             if result["f1"] > max_val_f1:
@@ -440,7 +445,7 @@ def run_train(
     return model, max_result
 
 
-def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_preds=False, return_loss=False):
+def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, test_examples, return_preds=False, return_loss=False):
     model.eval()
 
     mip_cos = []
@@ -579,6 +584,11 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
     # compute metrics
     result = compute_metrics(preds, out_label_ids)
 
+    # Compute for error analysis, do this only if some args.var is set to True
+    if args.do_error_analysis and test_examples != None:
+        compute_and_store_analysis(preds, out_label_ids, args, test_examples)
+
+
     for key in sorted(result.keys()):
         logger.info(f"  {key} = {str(result[key])}")
 
@@ -592,6 +602,25 @@ def run_eval(args, logger, model, eval_dataloader, all_guids, task_name, return_
     if return_preds:
         return preds
     return result
+
+def compute_and_store_analysis(predicted, true_labels, args, test_examples):
+
+    #mismatches = [(index, true_label, predicted_label, test_example[index][0], test_example[index][1]) for index, (true_label, predicted_label, test_example) in enumerate(zip(true_labels, predicted, test_examples)) if true_label != predicted_label]
+    len_predicted = len(predicted)
+    ultimate_list = []
+    count = 0
+    for i in range(len_predicted):
+        if true_labels[i] != predicted[i]:
+            count += 1
+            if true_labels[i] == None or predicted[i] == None or test_examples[i] == None:
+                print("Some thing is None : ")
+            else:
+                ultimate_list.append((i, true_labels[i], predicted[i], test_examples[i][0], test_examples[i][1]))
+    mismatches_df = pd.DataFrame(ultimate_list, columns=['Index', 'True Label', 'Predicted Label', 'sentence', 'word_index'])
+    path_to_csv = os.path.join(args.use_finetune_path, "error-analysis.csv")
+    mismatches_df.to_csv(path_to_csv, index=False)
+    print("Mismatches have been saved")
+
 
 def add_cos(list_, cos):
     if len(list_) == 0:
@@ -718,6 +747,12 @@ def load_trained_model(args, model, tokenizer):
         model.load_state_dict(torch.load(output_model_file))
 
     return model
+
+def load_from_fine_tuned(args, model, tokenizer):
+    output_model_file = os.path.join(args.use_finetune_path, WEIGHTS_NAME)
+    model.load_state_dict(torch.load(output_model_file))
+    return model
+
 
 def loss_plot(train_loss, val_loss):
     plt.plot(train_loss, label='Train loss')
