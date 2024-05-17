@@ -1,0 +1,799 @@
+reveals:The documentary reveals the hidden lives of deep-sea creatures.
+fatal:A single error proved fatal for the mission's success.
+charges:The prosecutor filed charges against the suspect.
+blunt:His remarks were so blunt that they hurt her feelings.
+collapse:The building was at risk of collapse after the earthquake.
+hefty:He lifted the hefty box with great effort.
+gripped:She was gripped with fear as the storm approached.
+charge:He took charge of the project to steer it back on track.
+predicts:The meteorologist predicts rain for tomorrow.
+staying-on:He's considering staying-on at the company for another year.
+a-levels:She achieved excellent grades in her A-Levels.
+brighter:The room became brighter as the curtains were drawn.
+courses:The university offers various courses in liberal arts.
+semi-skilled:The factory employs many semi-skilled workers.
+vocational:He attended a vocational school to learn carpentry.
+scoop:The journalist landed a big scoop with that interview.
+deserves:She definitely deserves the award for her hard work.
+hot-house:They grew exotic plants in the hot-house.
+immunities:The vaccine confers immunities against several diseases.
+reflect:The essay asks you to reflect on your personal experiences.
+fledged:After years of training, he is now a fully fledged engineer.
+see-sawing:The stock market has been see-sawing all week.
+constitutional:They challenged the law on constitutional grounds.
+haunt:That old mansion is said to haunt the locals.
+no-fixed-abode:The suspect was described as having no fixed abode.
+botolph:St. Botolph's church is a historic site in the city.
+crypt:The ancient crypt was discovered beneath the castle.
+homeless:The charity provides meals for the homeless.
+exploited:The workers felt exploited due to low wages and long hours.
+shattered:The glass shattered into a thousand pieces.
+two-tiered:The company introduced a two-tiered pricing model.
+scenes:The movie's action scenes were incredibly realistic.
+recipe:This recipe for chocolate cake is my grandmother's.
+bound:The package was bound with heavy rope.
+accompany:She asked me to accompany her to the doctor's office.
+arrangement:They made an arrangement to meet at noon.
+swept:The wind swept the leaves across the yard.
+sepia-tinted:The photograph was a beautiful sepia-tinted portrait from the 1920s.
+collapsed:The chair collapsed under his weight.
+footnote:The critical information was mentioned in a footnote.
+powers:The president's powers are clearly defined by the constitution.
+mixture:The cake batter is a mixture of flour, eggs, and sugar.
+foundations:The earthquake damaged the building's foundations.
+blend:This wine is a perfect blend of different grapes.
+hallmark:Quality craftsmanship is the hallmark of our products.
+plotless:The movie was interesting, though somewhat plotless.
+reaching:She was reaching for the top shelf when she lost her balance.
+wider:The company plans to reach a wider audience with its new marketing campaign.
+figured:He finally figured out how to solve the puzzle.
+drenched:They were drenched by the sudden downpour.
+intoxicating:The fragrance of the blooming flowers was intoxicating.
+scores:The musician writes scores for films.
+clarity:The clarity of his explanation helped everyone understand.
+score:She scored the winning goal in the last minute.
+sitter:Finding a good babysitter can be challenging.
+habit:Drinking coffee every morning is a habit for many.
+terse:His response was terse and to the point.
+etched:The artist etched a beautiful scene onto the metal plate.
+machinery:The factory's machinery needs regular maintenance.
+coin:He flipped a coin to decide.
+restored:The painting was beautifully restored.
+reaction:Her reaction to the news was of complete surprise.
+attacked:The village was attacked at dawn.
+pitched:He pitched the idea to the board of directors.
+belonged:That book belonged to my grandfather.
+repaid:The loan was fully repaid last month.
+prolific:The author was known for being prolific.
+buzzard:A buzzard circled above the open field.
+eyrie:The eagle's eyrie was located high on the cliff.
+forays:His forays into writing poetry were quite successful.
+landmark:The statue is considered a landmark in the city.
+bellowing:The sound of bellowing cattle could be heard in the distance.
+loosen:He used a wrench to loosen the bolts.
+projected:The new theater's opening is projected for next year.
+earmarked:Funds were earmarked for the new school building.
+breadth:The breadth of his knowledge is impressive.
+boards:She serves on the boards of several non-profit organizations.
+positions:The company has openings for several positions.
+defended:The lawyer defended her client vigorously.
+six-lane:They're converting the highway into a six-lane road.
+spirit:His spirit remained unbroken despite the challenges.
+yardstick:Profit is often used as a yardstick for success.
+umpire:The umpire called the player out.
+smash:He hit a smash to win the tennis match.
+decrepit:The decrepit building was a safety hazard.
+effete:Critics dismissed his arguments as effete and outdated.
+constitution:The country's constitution guarantees freedom of speech.
+allows:The rule allows everyone to participate.
+capture:The photographer hoped to capture the beauty of the sunset.
+ram:The ship was designed to ram into ice to break it.
+throats:The fans screamed themselves hoarse, their throats raw.
+acquiescing:She ended up acquiescing to their demands.
+arguing:They spent hours arguing over the details.
+inferior:The product was inferior to its competitors.
+tactical:The general's tactical decisions were crucial to the victory.
+reinforce:We need to reinforce the walls to make them stronger.
+splits:The group splits into teams for the project.
+pint-sized:The pint-sized car was perfect for city driving.
+rollers:She used rollers to curl her hair.
+thumb:He gave a thumbs-up to show his approval.
+half-way:They stopped half-way through the journey to rest.
+handles:The cabinet's handles were made of brass.
+bending:Bending the wire carefully, she created a beautiful sculpture.
+plethora:There was a plethora of options on the menu.
+loaded:The truck was loaded with goods.
+talked-about:The film was the most talked-about release of the year.
+stadia:The sports complex includes several stadia.
+self-destruct:The device has a self-destruct feature for security.
+self-absorbed:He was too self-absorbed to notice her discomfort.
+doodlings:His notebook was full of doodlings from the meeting.
+long-haired:The long-haired cat shed fur everywhere.
+appetising:The smell of the freshly baked bread was appetising.
+foray:Their foray into the new market was successful.
+sweaty:After the workout, her clothes were sweaty.
+ingredients:Fresh ingredients are key to a good meal.
+takeaway:They ordered takeaway from their favorite restaurant.
+salubrious:She moved to a more salubrious part of the city.
+chinese:They decided to have Chinese for dinner.
+wholesome:He tried to eat a more wholesome diet.
+uninhibited:The children were uninhibited in their play.
+whelping:The dog was whelping, so they prepared a quiet space for her.
+incarnations:The character has gone through several incarnations in the series.
+odd:His behavior was odd, which made her suspicious.
+diminishing:The chances of success were diminishing with each delay.
+minefields:The discussion was full of political minefields.
+under-fives:The nursery caters to the needs of under-fives.
+bludgeoned:The victim was bludgeoned to death.
+rose-tinted:She viewed the past through rose-tinted glasses.
+reassuring:His presence was reassuring during the crisis.
+characters:The book features a cast of colorful characters.
+harsh:The desert conditions were harsh and unforgiving.
+breaks:She takes short breaks throughout the day to stay focused.
+curious:The curious child asked endless questions.
+gimlet-eyed:The gimlet-eyed teacher missed nothing in the classroom.
+minefield:Navigating the legal system was like walking through a minefield.
+tree-lined:The tree-lined avenue was beautiful in autumn.
+highlighted:The report highlighted the main points of the discussion.
+brilliant:Her brilliant idea solved the problem.
+coat-hanger:He fetched a coat-hanger to retrieve the keys from the drain.
+buried:The treasure was buried deep underground.
+maintain:It's important to maintain a healthy work-life balance.
+absorbing:The book was so absorbing that she read it in one sitting.
+steam:The kettle began to release steam as it boiled.
+armies:The two armies met on the battlefield at dawn.
+cave:They explored the cave looking for ancient artifacts.
+puts:The chef puts a unique twist on traditional recipes.
+lagging:The software was lagging, making work difficult.
+untouched:The remote island remained untouched by modernity.
+neat:He kept his desk incredibly neat.
+bogged:They got bogged down in details and missed the deadline.
+reckons:She reckons it'll take about an hour to fix.
+expands:The company plans to expand into international markets.
+business-orientated:His approach is very business-orientated.
+priming:He was priming the wall before painting it.
+bankroll:They found an investor to bankroll the project.
+stake:He has a significant stake in the company.
+runs:She runs a small boutique in the city.
+fantastic:The view from the top of the mountain was fantastic.
+dormitories:The college dormitories house over 200 students.
+aim:Their aim is to reduce waste by 50%.
+replaced:The old model was replaced by a newer version.
+handicap:The golfer played with a handicap of six.
+strengthening:They are strengthening their defenses in preparation.
+reverse:The decision was reversed after further review.
+sidelines:The injured player watched the game from the sidelines.
+horizon:The sun set just beyond the horizon.
+heap:There was a heap of clothes on the floor.
+arrange:Can you arrange the flowers in a vase?
+fixtures:They replaced all the old fixtures in the house.
+consumed:She was completely consumed by her work.
+conflagration:The conflagration destroyed several buildings.
+scatter:The wind scattered the papers all over the yard.
+ashes:All that remained of the notes were ashes.
+discordant:The band's performance was unexpectedly discordant.
+lose:It's easy to lose track of time when you're having fun.
+spinelessly:He acted spinelessly, avoiding any tough decisions.
+chants:The crowd's chants grew louder as the player approached.
+wretched:He felt wretched after hearing the bad news.
+going-over:The document needs a thorough going-over before submission.
+half-a-dozen:She bought half-a-dozen eggs from the market.
+squirming:The children were squirming in their seats during the assembly.
+discomfort:He tried to ignore the discomfort of the hard chair.
+ruins:They explored the ancient ruins at the site.
+micawber-like:His Micawber-like optimism kept the team's spirits high.
+admitted:She admitted that she was wrong.
+hammering:The sound of hammering echoed from the construction site.
+half-time:The coach gave a pep talk during half-time.
+penury:The artist lived in penury for most of his life.
+twopence:The old coin was worth only twopence.
+pedestrian:The area is crowded, especially during pedestrian rush hours.
+commend:The mayor commended the volunteers for their hard work.
+donkeys:Donkeys were used to carry supplies up the mountain.
+habits:Good habits are the key to success.
+mobility:Physical therapy improved his mobility after the surgery.
+aggression:The team's aggression on the field intimidated their opponents.
+swifter:The stream flowed swifter due to the recent rains.
+clearer:His explanation became clearer after the demonstration.
+encapsulated:The speech encapsulated her vision for the future.
+harmony:The choir sang in perfect harmony.
+well-crafted:The article was well-crafted, with careful attention to detail.
+11-point:He won the game with an 11-point lead.
+backward:He glanced backward to see if he was being followed.
+hints:The clues left hints about the treasure's location.
+gifts:The children were excited to open their gifts.
+recall:I can't recall where I placed my keys.
+exhibiting:The museum is exhibiting artifacts from ancient Greece.
+redeeming:His loyalty is his most redeeming quality.
+muted:The colors in the painting are muted and soothing.
+scuffling:There was scuffling heard outside the door.
+piqued:Her interest was piqued by the mysterious letter.
+joust:The knights prepared to joust in the tournament.
+pocketed:He pocketed the keys without anyone noticing.
+half-hour:The meeting lasted about a half-hour.
+stretch-version:The limousine was a stretch-version, very long and luxurious.
+keeper:He proved to be a reliable keeper for the team.
+peak:The mountaineers reached the peak just before noon.
+grip:The climber had a firm grip on the rope.
+accession:The accession of the new king was a grand event.
+suspension:The player faced suspension after the incident.
+flopped:The movie flopped and was pulled from theaters early.
+heavens:She looked to the heavens and prayed.
+bean:He added a bean to the pot for extra flavor.
+hard-working:The hard-working student earned top grades.
+left-back:The team's left-back blocked the opponent's advance.
+withdrawn:The shy child was withdrawn and spoke very little.
+fruitful:Their collaboration was fruitful, resulting in a successful project.
+sweeper:The street sweeper cleaned up the debris.
+exchanged:They exchanged gifts during the holiday season.
+pharisees:The Pharisees were a group in ancient Jewish society known for strict observance of laws.
+dogged:His dogged determination helped him overcome many obstacles.
+exercised:She exercised regularly to stay healthy.
+farther:He traveled farther north than anyone else in his expedition.
+handed:The handed-down recipe was a family secret.
+teachting:His teaching method was innovative and engaging.
+restore:The restoration project aimed to restore the historic building.
+aggravated:His comments only aggravated the situation.
+evil:The villain in the story was truly evil.
+brotherly:His brotherly advice was always welcome.
+rein:She had to rein in her spending to save money.
+casts:The play casts two main characters as rivals.
+fixes:He fixes old cars as a hobby.
+unfixed:The schedule remains unfixed; it could change any day.
+underpinning:The underpinning theory was difficult to understand.
+soft-left:The party's soft-left faction was gaining influence.
+cutting:The cutting remarks hurt more than he expected.
+run-up:In the run-up to the election, the debates were heated.
+yield:The investment yielded a high return.
+right-wingers:The right-wingers rallied for stricter laws.
+goose-step:The soldiers were trained to goose-step during the parade.
+buoyed:She was buoyed by the support of her friends.
+overtaken:He was overtaken in the last lap of the race.
+supports:The bridge supports the weight of thousands of vehicles daily.
+stronger:After months of training, he felt stronger than ever.
+dramatic:The play's ending was dramatic and unexpected.
+controlled:The experiment was conducted in a controlled environment.
+upto:The project is upto its final stage.
+conducting:They were conducting research on the new drug.
+looms:The deadline looms, so we need to hurry.
+fade:The curtains will fade if left in the sun too long.
+sunset:We watched the sunset over the ocean.
+narcissistic:His narcissistic tendencies made teamwork difficult.
+smart-alecky:His smart-alecky comments often got him in trouble.
+revived:The revival of the old musical was a huge success.
+reinterpreted:The classic novel was reinterpreted in a modern setting.
+stripped:The walls were stripped of wallpaper during the renovation.
+threadbare:His old coat was threadbare but comfortable.
+starved:The city was starved of resources during the siege.
+handy:It's handy to have a grocery store so close to home.
+struggling:The small business was struggling to stay afloat.
+lowly:He started his career in a lowly position but quickly rose through the ranks.
+marlboro:He pulled a Marlboro from the pack and lit it.
+lights:The lights flickered during the storm.
+sprawl:Urban sprawl continues to be a concern for environmentalists.
+barn:The old barn was used for storage.
+stars:On a clear night, the stars are vivid and numerous.
+gladiatorial:The debate took on a gladiatorial tone as each side attacked the other's arguments.
+inert:The substance was inert and posed no risk.
+troubled:The troubled waters of the river were dangerous to navigate.
+trailing:She was trailing behind the group during the hike.
+galloped:The horses galloped across the field.
+puff:He took a puff from his cigarette.
+orchestrated:The event was orchestrated by a team of skilled planners.
+pal:He's been my pal since high school.
+spewing:The volcano was spewing lava and ash.
+defeats:The team suffered several defeats this season.
+retune:He had to retune his guitar before the concert.
+succumbed:She succumbed to her injuries after the accident.
+greenness:The greenness of the hills was a sight to behold.
+adjustments:Minor adjustments were made to the machine to improve its performance.
+shorter:She cut her hair shorter for the summer.
+boosts:Regular exercise boosts overall health.
+dazzling:The dancer's dazzling performance captivated the audience.
+mixing:Mixing paints, she created the perfect shade of blue.
+charm:His charm made him popular at social events.
+accessible:The building is accessible to people with disabilities.
+aimed:The program is aimed at helping young entrepreneurs.
+combines:The recipe combines flavors from different cuisines.
+explodes:The firework explodes in the sky, illuminating the night.
+flashy:His flashy dress sense made him stand out.
+reviving:The community is reviving an old tradition.
+hunts:The lion hunts for food in the early morning hours.
+sharpen:He used a stone to sharpen his knife.
+poison:The poison was identified as a rare tropical toxin.
+puritans:The Puritans played a key role in early American history.
+dismiss:The judge may dismiss the case if there is not enough evidence.
+appetites:The long hike increased their appetites.
+hits:His new song is one of the top hits this year.
+unquenching:His thirst for knowledge seemed unquenching.
+quenching:Drinking water helped in quenching his thirst.
+quench:The rain helped to quench the forest fire.
+smack:He gave the ball a hard smack with the bat.
+dries:The paint dries faster in warm, dry weather.
+lascivious:His lascivious remarks were deemed inappropriate.
+swirling:The leaves were swirling in the wind.
+oiliness:The oiliness of the salad dressing was too much for her taste.
+lace:She wore a dress with intricate lace details.
+mallet:He used a mallet to shape the metal.
+favours:He does small favours for his neighbors.
+punch:He threw a punch during the fight.
+ritual:The ritual of lighting candles is central to the ceremony.
+ritualise:They ritualise the process of making tea.
+novice:As a novice in yoga, she was learning the basic poses.
+stresses:The job stresses the importance of attention to detail.
+sunk:The boat sunk quickly after hitting the rock.
+ragbag:His essay was a ragbag of unrelated ideas.
+bearing:The compass is essential for knowing your bearing in the wilderness.
+bowels:The disease affects the bowels, causing severe discomfort.
+lingers:The scent of her perfume lingers in the room.
+ticklish:He's very ticklish on his feet.
+novices:The workshop is intended for novices who are just starting out in photography.
+produces:The farm produces a large quantity of apples each year.
+overflow:The river may overflow its banks during the heavy rains.
+swagged:The curtains were swagged elegantly in the grand hall.
+ox-eye:The ox-eye daisies brightened up the meadow.
+venerability:The venerability of the ancient text commands respect.
+dictate:His health will dictate when he can return to work.
+planned:The event was planned down to the last detail.
+overwhelmed:She felt overwhelmed by the crowd.
+explains:The teacher explains complex topics with ease.
+chains:The prisoner was kept in chains.
+surveys:The company conducts surveys to understand customer preferences.
+arranging:She was arranging the flowers for the wedding.
+attracting:The new policy is aimed at attracting foreign investors.
+pension-linked:The pension-linked benefits are crucial for the retirees.
+staffing:Staffing issues have been a major challenge for the hospital.
+streamline:They are looking to streamline the production process.
+pointing:Pointing to the map, he showed us where we were.
+house-hunters:Many house-hunters are looking for properties in suburban areas.
+entering:Entering the room, she noticed that something was amiss.
+preserve:Efforts are underway to preserve the historic building.
+pervades:A sense of calm pervades the meditation center.
+stretch:The fabric has enough stretch to be comfortable.
+querulously:She asked querulously why we were late.
+commemorate:They gathered to commemorate the town's founding.
+unruly:The unruly crowd was difficult to manage.
+three-course:The dinner included a three-course meal.
+sweeps:The new broom sweeps clean, as the saying goes.
+goggle-eyed:The children were goggle-eyed at the sight of the circus.
+casting:He's involved in casting for the new TV show.
+cacophony:A cacophony of sounds came from the busy market.
+heroic:His heroic actions saved many lives.
+fullest:She lived her life to the fullest, enjoying every moment.
+wheeled:He wheeled his bike out of the garage.
+evolved:The software has evolved significantly over the past years.
+humanised:The story humanised the historical figure, making her more relatable.
+upturned:His upturned face caught the raindrops.
+gather:Let's gather some flowers from the garden.
+slender:The bridge's slender design is truly elegant.
+boldly:She stepped boldly into the room, ready to make her point.
+praised:The critic praised the film for its innovative storytelling.
+declines:He declines the invitation due to prior commitments.
+astronomical:The cost was astronomical, far beyond what we expected.
+de-frocking:The scandal led to the de-frocking of the priest.
+witnessed:I witnessed the accident from the sidewalk.
+unstable:The chemical is unstable and must be handled with care.
+tandem:They worked in tandem to complete the project quickly.
+blitz:The team planned a marketing blitz for the new product.
+devotee:She's a devotee of classical music.
+mythical:Dragons are mythical creatures often depicted in folklore.
+tragic:The play's tragic ending left the audience in tears.
+icon:The singer has become an icon in the music industry.
+graced:Her presence graced the event with elegance.
+transposed:The data was transposed for better comparison.
+segments:The report was divided into several segments.
+facets:The gem's facets caught the light beautifully.
+shared:They shared a love for hiking and nature.
+encapsulisation:His speech was an encapsulisation of his views on the economy.
+stereotypical:The character was a stereotypical villain, complete with a dark cape.
+throws:He throws the ball with impressive speed.
+revealing:The interview was revealing, shedding light on her motivations.
+uncovers:The investigation uncovers new evidence.
+appropriation:There was controversy over the appropriation of cultural symbols.
+cabbages:The garden was filled with cabbages ready to be harvested.
+impossibility:The task seemed an impossibility at first.
+stemmed:The flow of water was stemmed by the dam.
+attractiveness:The attractiveness of the city makes it a popular tourist destination.
+closest:She is one of my closest friends.
+directed:The film is directed by an award-winning director.
+convey:His speech failed to convey his true intentions.
+unbowed:Despite the challenges, she remained unbowed.
+disguise:He wore a disguise to avoid being recognized.
+mix:The DJ began to mix the tracks seamlessly.
+non-fine:The non-fine print of the contract contains important details.
+dismissed:The idea was dismissed as impractical.
+dislocation:Economic changes can lead to social dislocation.
+defusing:The negotiator was skilled at defusing tense situations.
+indictment:The indictment charged him with multiple counts of fraud.
+inhabited:The island has been inhabited since ancient times.
+bloodspattered:The crime scene was bloodspattered and shocking.
+sacrifice:They made a great sacrifice to help others.
+thrust:He thrust the sword into the ground.
+leaps:The dancer leaps gracefully across the stage.
+discover:They hope to discover new species in the unexplored forest.
+revealed:The magician revealed how the trick was done.
+deals:The company makes deals with suppliers to reduce costs.
+derives:She derives great joy from playing the piano.
+strengths:The team's strengths lie in their quick decision-making.
+socialised:The puppies were well socialised at the kennel.
+technologized:Our lives have become highly technologized.
+organs:The organs in the human body each have specific functions.
+defiled:The sacred site was defiled by vandals.
+labyrinth:The old library was a labyrinth of shelves.
+trauma:She experienced trauma after the accident.
+violated:The agreement was violated, leading to legal action.
+possessed:He possessed the rare ability to see solutions where others saw problems.
+misused:The data was misused by the unauthorized personnel.
+opposes:He openly opposes the new policy.
+asserts:She asserts her independence at every opportunity.
+resistance:The bacteria developed resistance to the antibiotic.
+coda:The musical coda brought the piece to a satisfying conclusion.
+fertility:The fertility of the soil is ideal for growing crops.
+borderlines:The study explores the borderlines between art and digital media.
+juxtapositions:The exhibition showcases the juxtapositions of modern and traditional art.
+versus:The debate on nature versus nurture continues.
+tonally:The film shifts tonally from comedy to drama.
+blending:Blending these ingredients creates a delicious smoothie.
+banished:He was banished from the kingdom.
+harshly:She spoke harshly, which surprised everyone.
+refer:The doctor may refer you to a specialist.
+peeling:The paint on the old house was peeling off.
+humorous:He gave a humorous speech that had everyone laughing.
+flutters:A small bird flutters its wings rapidly.
+dislocated:He dislocated his shoulder during the game.
+piñata:The children eagerly hit the piñata at the birthday party.
+teeming:The river was teeming with fish.
+hollow:The tree was old and hollow inside.
+polemical:His essays are known for their polemical content.
+inverted:The image was inverted for effect.
+gloss:She applied a gloss to her lips to make them shine.
+individualistic:His individualistic approach often set him apart from the team.
+redress:The court offered redress to the wronged parties.
+jackboots:The sound of jackboots was heard in the distance.
+serge:He wore a serge jacket that was stiff and uncomfortable.
+crawl:The baby began to crawl across the room.
+bluffing:It turned out he was bluffing about his poker hand.
+bullying:The school has a strict policy against bullying.
+shrug:She gave a shrug and said she didn't know.
+hint:He dropped a hint about his secret plan.
+jackboot:The oppressive regime was often described as a jackboot trampling freedoms.
+blankness:His face showed blankness, revealing no emotions.
+dissolve:The tablet will dissolve in water.
+pays:She pays her bills on time every month.
+tribute:The concert was a tribute to the legendary musician.
+fight:He had to fight to overcome his fears.
+expresses:She expresses herself through her art.
+shine:His talent really began to shine during the live performance.
+emphasised:The importance of teamwork was emphasised during the meeting.
+commonsense:His approach is guided by commonsense.
+exercising:Exercising regularly is key to maintaining health.
+appealed:The court's decision was appealed by the defendant.
+defines:The constitution defines the powers of the government.
+envisages:The project envisages a series of workshops.
+arises:The need for a new plan arises from recent changes.
+adapts:The species adapts quickly to changes in its environment.
+react:How did he react to the news?
+enacting:The government is enacting a new law to improve safety.
+placing:She's placing the final touches on the cake.
+uphill:The uphill portion of the hike was the most challenging.
+beaten:The path was well-beaten, showing signs of frequent use.
+struggle:The struggle for independence lasted many years.
+respectable:He has a respectable job in the city.
+margins:The margins of the book were filled with handwritten notes.
+predecessors:His predecessors had established a solid foundation for the company.
+undermined:His credibility was undermined by his inconsistent statements.
+fixture:The lamp became a permanent fixture in his study.
+boosted:Her confidence was boosted by the positive feedback.
+prop:The movie set was full of interesting props.
+captain:The captain steered the ship through the storm.
+capt:Capt. Smith led the team on the rescue mission.
+pokes:He pokes fun at himself in his comedy routines.
+powerless:They felt powerless to change the situation.
+light-hearted:The play is a light-hearted comedy that's perfect for a family outing.
+man-hating:The character was unfairly labeled as man-hating due to her strong opinions.
+bitterness:The bitterness of the medicine made it hard to swallow.
+forum:The online forum is a place for fans to discuss their favorite shows.
+pulsating:The pulsating lights created a club-like atmosphere.
+throbbing:He had a throbbing headache all day.
+flurries:Snow flurries began to fall as they reached the cabin.
+damping:Damping the vibrations improves the machine's performance.
+recovering:She's recovering from a minor surgery.
+floated:Leaves floated on the surface of the pond.
+smother:She used a blanket to smother the small fire.
+clawed:The cat clawed at the door to be let out.
+provider:The company is a leading provider of cloud services.
+clattered:The dishes clattered as she stacked them in the cupboard.
+drilled:They drilled for oil in the area.
+stitched:The quilt was beautifully stitched by hand.
+stuffed:The toy was stuffed with soft cotton.
+debt:They are working hard to pay off their debt.
+chin:He stroked his chin thoughtfully.
+rattled:The windows rattled during the storm.
+tailored:The suit was tailored to fit him perfectly.
+prescribe:The doctor will prescribe medication for the infection.
+awayfrom:They moved away from the city for a quieter life.
+prescribes:The law prescribes severe penalties for such offenses.
+cure:Scientists are working to find a cure for the disease.
+leap:The frog made a huge leap across the pond.
+clue:The detective found a clue that led to the suspect.
+phases:The project has several phases, each with its own goals.
+prohibitively:The cost was prohibitively high, preventing many from attending.
+languages:She speaks several languages fluently.
+winning:His winning smile won him many friends.
+overturning:The court is considering overturning the previous decision.
+unveiled:The artist unveiled her latest sculpture at the gallery.
+muster:He mustered the courage to speak in front of the crowd.
+halt:The machine came to a halt after the power went out.
+contributed:She contributed her time and effort to the charity.
+treads:The treads on his boots were worn down.
+warily:He looked warily at the stranger approaching him.
+outlook:The economic outlook for the next year is positive.
+severely-reduced:The budget has been severely reduced due to cuts.
+portfolio:The photographer showed us his portfolio of work.
+feverishly:He worked feverishly to meet the deadline.
+spooks:The story about the haunted house spooks the children.
+dodged:He dodged the ball at the last second.
+mantle:He took on the mantle of leadership at a young age.
+felled:The tree was felled by a strong wind during the storm.
+provoke:His comments were meant to provoke a reaction.
+raise:They plan to raise funds through a charity event.
+midwife:The midwife assisted in the delivery of the baby.
+unarmed:The protesters were unarmed, carrying only signs.
+minimised:The risks were minimised with careful planning.
+strikes:The union announced that it strikes next week.
+headway:They made significant headway on the project.
+clashes:Clashes between the groups have been reported.
+diffuse:The lamp was designed to diffuse the light softly.
+sweep:She made a clean sweep of the awards.
+commanders:The commanders issued orders to their troops.
+constructing:They are constructing a new bridge over the river.
+rotating:The rotating exhibit features different artists each month.
+continuous:The machine allows for continuous operation.
+interchange:The highway interchange was redesigned to improve traffic flow.
+retains:The soil retains moisture well, which is great for plants.
+closeness:The closeness of the team contributes to its success.
+infused:The tea was infused with herbs and spices.
+thrusts:The plot thrusts the protagonist into a series of challenges.
+crests:The bird crests the hill and soars over the valley.
+uni-directional:The street is uni-directional; you can only go one way.
+activate:Click here to activate your account.
+wave-like:The curtains moved in a wave-like pattern in the breeze.
+sufferings:The book describes the sufferings of the war's victims.
+masses:The product was designed to appeal to the masses.
+reflects:The mirror reflects light, brightening the room.
+consciousness:Yoga can help raise one's consciousness about their body and mind.
+craft:She has honed her craft as a sculptor over many years.
+state-masonry:The building was constructed using traditional state-masonry techniques.
+destroy:The hurricane could destroy homes and businesses.
+unharmed:Luckily, everyone was unharmed after the accident.
+embark:They are about to embark on a long journey.
+declaring:He is declaring his candidacy for mayor.
+summoning:She's summoning the courage to speak publicly.
+disengagement:The disengagement from the conflict will take time.
+naturalise:He decided to naturalise and become a citizen.
+evolving:The strategy is evolving as the market changes.
+maximise:The plan aims to maximise profits.
+defuse:The diplomat was able to defuse the tense situation.
+marginal:The changes had only a marginal impact on the outcome.
+hostile:The environment was hostile to new ideas.
+isolate:The scientists isolate the compound for further study.
+linkage:The linkage between the two machines improves efficiency.
+pyramid:The ancient pyramid stood tall against the skyline.
+string:He tied a string around the package.
+softly:She spoke softly so as not to wake the baby.
+hurling:The kids were hurling snowballs at each other.
+contemptuous:His contemptuous look made her feel unwelcome.
+slithered:The snake slithered across the path.
+gazed:She gazed at the stars, wondering about the universe.
+stomach-turning:The scene was stomach-turning and difficult to watch.
+whining:The machine started whining, indicating it needed repair.
+perched:The bird perched on the branch, looking around.
+mosquito:A mosquito buzzed annoyingly in the room.
+gulped:He gulped down his drink and asked for another.
+wiry:The old man was wiry and strong.
+edging:She was edging closer to achieving her goal.
+queasiness:The motion of the boat caused some queasiness.
+mopped:He mopped his brow with a handkerchief.
+repel:The spray is used to repel insects.
+well-connected:Being well-connected can open many doors in the industry.
+substantially:The price has been substantially reduced.
+over-provided:The event was over-provided with catered food.
+disentangle:It took hours to disentangle the knot.
+qualified:She is highly qualified for the position.
+irresistibly:The cake looked irresistibly delicious.
+lean:He managed to lean out of the window and grab the ball.
+enveloped:The fog enveloped the town, reducing visibility.
+eiderdown:She pulled the eiderdown closer to keep warm.
+over-balance:He lost his over-balance and stumbled.
+lurking:There was a sense of danger lurking in the shadows.
+throwing:He's good at throwing a baseball.
+cue:That's my cue to leave.
+assiduous:Her assiduous efforts paid off when she passed the exam.
+fixed:The date for the wedding is fixed for June.
+smartness:His smartness in handling the situation was noted by all.
+paw:The cat's paw was stuck in the door.
+descents:The mountain's steep descents can be dangerous.
+juggernaut:The company became a juggernaut in its industry.
+over-candid:His over-candid remarks sometimes offended people.
+over-emphatic:She was over-emphatic in her denial, which raised suspicions.
+prod:Sometimes you need a little prod to get going.
+farts:Everyone pretended not to notice when he farts in the room.
+presentational:The presentational skills of the speaker were excellent.
+invoking:Invoking an ancient law, the judge made his decision.
+curse:A curse was said to be placed on the ancient tomb.
+sorting:Sorting through her papers, she found the lost letter.
+reservations:I have some reservations about the new proposal.
+tasty:The stew was very tasty, especially with fresh bread.
+diversion:They took a diversion to avoid the roadworks.
+distractions:She removed all distractions to focus on her work.
+disaffected:The disaffected youth gathered to protest.
+smart:Wearing a smart suit, he impressed at the interview.
+faded:The old photograph had faded over time.
+unbecomingly:She reacted unbecomingly to the criticism.
+stridently:He argued stridently for his point of view.
+fooled:Many were fooled by the fake news.
+charmed:Guests were charmed by her gracious hosting.
+diverted:The flight was diverted to another airport due to fog.
+down-setting:The down-setting sun cast long shadows.
+straightforwardness:His straightforwardness is appreciated in these complex times.
+glared:She glared at him for being late.
+ungraceful:His ungraceful attempt at dancing made everyone laugh.
+bursting:The bag was bursting with groceries.
+volunteered:She volunteered at the local hospital.
+point-black:He refused point-blank to comply with the unreasonable request.
+set-out:They set out at dawn to climb the mountain.
+epic:The movie was an epic saga of love and war.
+marched:The soldiers marched in the parade with precision.
+smartly:He was dressed smartly for the interview.
+watchful:The guard was watchful throughout the night.
+stolid:His stolid demeanor gave nothing away.
+exhausted:After the long journey, they were completely exhausted.
+blinding:The blinding light made it hard to see the road.
+toll:The toll of the bell signaled the end of the ceremony.
+thinly:He thinly sliced the onions for the salad.
+lark:They went on a lark to the seaside for the day.
+mis-spent:He regretted the mis-spent years of his youth.
+catching:Catching the early train, she arrived on time.
+tease:They tease him about his new haircut.
+depression:Many people suffer from depression and seek treatment.
+sad:It was sad to see the old house in such disrepair.
+sack:He received the sack for his continuous poor performance.
+overlooking:Their house was overlooking the scenic lake.
+strike:Workers voted to strike for better pay.
+guts:It took guts to stand up to the bully.
+recalled:She recalled the first time they met.
+somersaults:The gymnast executed perfect somersaults during her routine.
+void:The contract was declared void by the court.
+unconfined:The unconfined joy at the reunion was palpable.
+ladder:He climbed the ladder to fix the roof.
+over-friendly:His over-friendly attitude made some people uncomfortable.
+evaded:He evaded the question by changing the subject.
+head-up:Keep your head up and don't let the criticism get you down.
+faked:He faked illness to avoid going to school.
+heatedly:They argued heatedly over the issue.
+shots:The photographer took several shots of the sunset.
+dynamite:They used dynamite to clear the road.
+sourly:He responded sourly to the playful teasing.
+hackles:The comment raised his hackles, making him angry.
+takin':She's takin' the lead in the project.
+plughole:He watched as the water spiraled down the plughole.
+bully:The school has a policy to deal with bullies.
+stooging:He accused them of stooging for the boss.
+mafia:The mafia was involved in various illegal activities.
+proportionately:The resources were distributed proportionately among the departments.
+confronted:She confronted him about his dishonesty.
+frozen:The lake was frozen solid in the winter.
+spheres:The project covers various spheres of technology.
+social-defence:The concept of social-defence is vital in community planning.
+departing:The departing CEO gave a farewell speech.
+distinguishes:His attention to detail distinguishes him from other managers.
+legacy:She left a legacy of charity and good deeds.
+pronounce:He struggled to pronounce the foreign words correctly.
+life-support:The patient was on life-support after the accident.
+denounces:The government denounces the actions of the militants.
+blunted:His criticism was blunted by his gentle tone.
+fixed-term:She was employed on a fixed-term contract.
+brings:Each season brings new challenges to the farmers.
+entrusts:He entrusts the care of his pets to a trusted friend.
+depart:The train is scheduled to depart at 8 a.m.
+sadistic:The villain's sadistic nature made him feared by all.
+underline:The teacher used a red pen to underline the important points.
+enacted:The new law was enacted by the government.
+individually:Each piece of artwork is crafted individually.
+persuasive:Her persuasive speech convinced the audience.
+first-degree:He was charged with first-degree burglary.
+third-degree:Third-degree burns require immediate medical attention.
+shades:The room was decorated in shades of blue and green.
+second-degree:She suffered second-degree burns from the fire.
+bills:He paid all his bills on time this month.
+weighing:Weighing the options, she made her decision.
+mobilised:The community mobilised to help the flood victims.
+upheld:The court upheld the decision of the lower court.
+contemplated:She contemplated moving to a new city.
+departs:The plane departs in three hours.
+violating:Violating the agreement could result in penalties.
+wanton:His wanton disregard for safety alarmed everyone.
+label:Each box was label with its contents.
+uphold:It's important to uphold the law.
+breach:Breach of contract is a serious issue.
+amplitude:The amplitude of the wave was measured by the scientists.
+protagonists:The protagonists in the story are very well-developed.
+confine:The animals were confined to a small area.
+assumes:He assumes responsibility for the project's success.
+overwhelm:The sheer volume of work can overwhelm new employees.
+directs:The manager directs the team's daily operations.
+assists:She assists students with their homework.
+restrict:The new policy restricts the use of mobile phones in schools.
+producing:The factory is producing a new line of products.
+satisfies:The solution satisfies all the requirements.
+resort:They had to resort to using backup generators.
+bounced:The ball bounced off the wall.
+bonded:The team bonded during the outdoor retreat.
+deduct:You can deduct the business expenses from your taxes.
+bonding:Bonding with his new puppy was a joyous experience.
+usurped:His role was usurped by a more aggressive colleague.
+lawless:The town was lawless after the sheriff left.
+close-packed:The audience was close-packed in the small theater.
+shaped:His experiences have shaped his character.
+corduroy:He wore a corduroy jacket that was soft to the touch.
+battalions:Battalions of soldiers marched in the parade.
+attractions:The city's main attractions include museums and historical sites.
+threads:She followed the threads of the story with interest.
+inhospitable:The desert is an inhospitable place for plants.
+blows:The wind blows strongly at the coast.
+isolation:He lived in isolation in the countryside.
+reconstructed:The building was reconstructed after the fire.
+loneliest:He described it as the loneliest time of his life.
+blocking:The fallen tree was blocking the road.
+shaggy:His shaggy hair covered his eyes.
+windbitten:His windbitten face showed the signs of many years at sea.
+flanks:The soldiers protected the flanks of the formation.
+clues:The detective looked for clues at the crime scene.
+blobs:Paint blobs covered his apron after the class.
+sheets:She changed the sheets on the bed.
+bridges:The city is known for its historic bridges.
+flashing:Emergency lights were flashing at the accident site.
+overlain:The map was overlain with data points.
+snarl:The dog gave a low snarl when approached.
+jarring:The jarring noise startled everyone.
+tightening:Tightening the bolts ensured the machine worked properly.
+ankle-breaking:He suffered an ankle-breaking fall during the hike.
+ceased:The rain ceased just as they reached home.
+broad-breasted:The broad-breasted turkey was ready for Thanksgiving.
+savoured:He savoured every bite of his meal.
+crisp:The air was crisp and cool in the morning.
+penetrated:The light penetrated the dense forest.
+propelled:The boat was propelled by a small motor.
+grim:The news from the front was grim.
+tensely:She waited tensely for the results.
+thinning:His hair was beginning to thin out.
+roll:She used a roll of tape to repair the book.
+elastoplast:He applied an elastoplast to the small cut.
+sore:His muscles were sore after the workout.
+coom:Dust and coom covered the old furniture in the attic.
+canny:His canny investments paid off.
+importing:The company is importing goods from China.
+diversions:Road diversions were in place due to the construction.
+ghetto:The museum tells the history of the ghetto during the war.
+manicure:She treated herself to a manicure at the salon.
+tides:The tides are influenced by the moon.
+awash:The decks were awash with seawater during the storm.
+hardest:The hardest part of the job is keeping up with the fast pace.
+nut:He cracked the nut open with a heavy stone.
+bantustan:During apartheid, Bantustans were set up as separate areas for black citizens.
+pitifully:The tiny kitten looked pitifully up at us.
+painfully:He was painfully aware of the awkward silence.
+pear-shaped:The plans went pear-shaped after the unexpected delays.
+hack:He managed to hack the system and gain unauthorized access.
+fodder:The scandal provided fodder for the tabloids for weeks.
+rebuild:They had to rebuild the house after the fire.
+irritation:He tried to hide his irritation when interrupted.
+wrung:She wrung the cloth to get the water out.
+trojan:His computer was infected with a Trojan virus.
+judging:Judging from his reaction, he was not pleased.
+roaring:The fireplace was roaring, warming the room.
+arising:Any issues arising must be reported immediately.
+advocate:She is a strong advocate for animal rights.
+jubilant:The fans were jubilant after the victory.
+camp:The children went to summer camp every year.
+challenger:The challenger for the title trained rigorously.
