@@ -2,7 +2,7 @@
 
 This repository contains the implementation for the final project of the course COMPSCI 685 - Advanced NLP. This repository is the extension of the work from the ACL 2023 paper "Metaphor Detection via Explicit Basic Meanings Modelling" (https://arxiv.org/pdf/2305.17268.pdf). 
 
-This paper uses two concepts of MIP (Metaphor Identification Process) and SPV (Selectional preference violation) for identifying metaphor 
+This paper uses two concepts of MIP (Metaphor Identification Process) and SPV (Selectional preference violation) for identifying metaphor in the BasicBERT model which we use as our starting point of experiments.
 
 We propose extension of this project by in two direction : 
 
@@ -33,9 +33,9 @@ All the below experiments involves changing main_config.cfg :
 
 2. To run Zero-shot with Mistral V0.2 :
 
-3. To run with modified MIP :
+3. To run BasicBERT with improved MIP :
 
-4. To run with Modified SPV :
+4. To run modified SPV :
 
 
 
