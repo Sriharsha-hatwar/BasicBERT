@@ -6,7 +6,7 @@ This paper uses two concepts of MIP (Metaphor Identification Process) and SPV (S
 
 We propose extension of this project by in two direction : 
 
-1. Utlize GPT 4 for improving the MIP representation 
+1. Adding new basic sentences from Merriam-Webster dictionary API and GPT4 to improving the MIP representation 
 
 2. Design a new way to represent SPV. 
 
@@ -14,7 +14,7 @@ We propose extension of this project by in two direction :
 ## Repository Structure
 The repository is structured as follows:
 
-DataCollection/: Contains the script used for extending data and also contains dataset created using GPT3.5.
+DataCollection/: Contains the scripts for obtaining literal sentences from Merriam-Webster API and formatting sentnces into VUA20 dataset format. Also contains generated sentences from GPT-4. 
 
 utils/: Utility functions and scripts for data processing and model evaluation.
 
