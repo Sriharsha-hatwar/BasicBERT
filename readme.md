@@ -15,7 +15,9 @@ We propose extension of this project by in two direction :
 The repository is structured as follows:
 
 DataCollection/: Contains the script used for extending data and also contains dataset created using GPT3.5.
+
 utils/: Utility functions and scripts for data processing and model evaluation.
+
 results/: Directory for storing evaluation results and metrics.
 
 
