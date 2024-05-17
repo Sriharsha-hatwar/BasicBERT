@@ -2,29 +2,31 @@
 
 This repository contains the implementation of our ACL 2023 paper "Metaphor Detection via Explicit Basic Meanings Modelling" (https://arxiv.org/pdf/2305.17268.pdf). 
 
-BasicBERT is a novel metaphor identification mechanism that leverages the Metaphor Identification Process (MIP) via direct basic meaning modelling of targets. The core idea behind BasicBERT is to compare the contextual meaning of a word with its basic meaning to identify metaphorical usages. This approach significantly improves the metaphor detection performance, as demonstrated in our paper.
+This repository contains the implementation for the final project of the course COMPSCI 685 - Advanced NLP. This repository is the extension of the work from the ACL 2023 paper "Metaphor Detection via Explicit Basic Meanings Modelling" (https://arxiv.org/pdf/2305.17268.pdf). 
+
+This paper uses two concepts of MIP (Metaphor Identification Process) and SPV (Selectional preference violation) for identifying metaphor 
+
+We propose extension of this project by in two direction : 
+
+1. Utlize GPT 3.5 for improving the MIP representation 
+
+2. Design a new way to represent SPV. 
+
+
+## Repository Structure
+The repository is structured as follows:
+
+data/: Contains the datasets used for training and evaluation.
+utils/: Utility functions and scripts for data processing and model evaluation.
+results/: Directory for storing evaluation results and metrics.
+
 
 ## Run
 
-We're preparing our code and pre-trained models. Will be ready soon. In the mean time, you could check out our work at [EACL 2023](https://github.com/liyucheng09/MetaphorFrame), where we provide a ready-to-use metaphor detection model that can be easily applied on your own data.
 
 ## License
 
 This project is licensed under the MIT License.
-
-## Citation
-
-If you find this code useful in your research, please consider citing our paper:
-
-```
-@article{Li2023MetaphorDV,
-  title={Metaphor Detection via Explicit Basic Meanings Modelling},
-  author={Yucheng Li and Shunyu Wang and Chenghua Lin and Guerin Frank},
-  journal={ArXiv},
-  year={2023},
-  volume={abs/2305.17268}
-}
-```
 
 ## Contact
 
