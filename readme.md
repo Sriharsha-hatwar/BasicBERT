@@ -6,7 +6,7 @@ This paper uses two concepts of MIP (Metaphor Identification Process) and SPV (S
 
 We propose extension of this project by in two direction : 
 
-1. Utlize GPT 3.5 for improving the MIP representation 
+1. Utlize GPT 4 for improving the MIP representation 
 
 2. Design a new way to represent SPV. 
 
@@ -20,8 +20,23 @@ utils/: Utility functions and scripts for data processing and model evaluation.
 
 results/: Directory for storing evaluation results and metrics.
 
+To run the experiments, please make sure the data needed for running, which is available at 
+
 
 ## Run
+
+For running extensions of our proposed approach, it is evaluated against two more experiments : 
+
+All the below experiments involves changing main_config.cfg : 
+
+1. Running a Vanilla RoBERTA on the dataset :
+
+2. To run Zero-shot with Mistral V0.2 :
+
+3. To run with modified MIP :
+
+4. To run with Modified SPV :
+
 
 
 ## License
