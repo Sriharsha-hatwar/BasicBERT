@@ -1,7 +1,5 @@
 # BasicBERT: Metaphor Detection via Explicit Basic Meanings Modelling
 
-This repository contains the implementation of our ACL 2023 paper "Metaphor Detection via Explicit Basic Meanings Modelling" (https://arxiv.org/pdf/2305.17268.pdf). 
-
 This repository contains the implementation for the final project of the course COMPSCI 685 - Advanced NLP. This repository is the extension of the work from the ACL 2023 paper "Metaphor Detection via Explicit Basic Meanings Modelling" (https://arxiv.org/pdf/2305.17268.pdf). 
 
 This paper uses two concepts of MIP (Metaphor Identification Process) and SPV (Selectional preference violation) for identifying metaphor 
