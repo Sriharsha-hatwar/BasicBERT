@@ -30,8 +30,11 @@ For running extensions of our proposed approach, it is evaluated against two mor
 All the below experiments involves changing main_config.cfg : 
 
 1. Running a Vanilla RoBERTA on the dataset :
+   ```
+   python main.py --model_type MELBERT --bert_model roberta-base --learning_rate 5e-5 --seed 41
+   ```
 
-2. To run Zero-shot with Mistral V0.2 :
+3. To run Zero-shot with Mistral V0.2 :
    This involves running the file : zero-shot.py
     ```
     python zero-shot.py 
