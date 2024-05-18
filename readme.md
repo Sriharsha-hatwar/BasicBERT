@@ -18,8 +18,6 @@ DataCollection/: Contains the scripts for obtaining literal sentences from Merri
 
 utils/: Utility functions and scripts for data processing and model evaluation.
 
-results/: Directory for storing evaluation results and metrics.
-
 To run the experiments, please make sure the data needed for running, which is available at https://huggingface.co/datasets/liyucheng/vua20/tree/main
 
 
