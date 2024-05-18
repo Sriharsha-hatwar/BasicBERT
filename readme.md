@@ -42,8 +42,18 @@ All the below experiments involves changing main_config.cfg :
     If you want to change the location of the test dataset, please change it in line 109. 
 
 4. To run BasicBERT with improved MIP :
-
+   
 5. To run modified SPV :
+   
+   Change the main_config.cfg where the model_type is changed to `SPV_MODIFIED` and task_name is `vuaextended` which contains the new dataset.
+   later, exectute :
+   ```
+   python main.py
+   ```
+   This experiment also includes using the training dataset : https://drive.google.com/file/d/1J3wG9bn5bJOphsPpmR4X9BS9eJzGaEm3/view?usp=sharing
+   please replace this in data/VUA20 and execute.
+   To run the inference, please make sure run_train=False and run_infer=True with the model at : https://drive.google.com/file/d/1kDvi6ldVi-GWWd1YFlipLoUVTBvordkS/view?usp=drive_link
+   with `use_finetune_path` pointing to the saved model. 
 
 
 
