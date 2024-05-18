@@ -668,6 +668,10 @@ def load_pretrained_model(args):
         model = AutoModelForTokenClassification(
             args=args, Model=bert, config=config, num_labels=args.num_labels
         )
+    if args.model_type == "RobertaBase":
+        model = RoBERTaForMetaphorClassification(
+            args=args, Model=bert, config=config, num_labels=args.num_labels
+        )
     if args.model_type == "MELBERT_SPV":
         model = AutoModelForSequenceClassification_SPV(
             args=args, Model=bert, config=config, num_labels=args.num_labels
