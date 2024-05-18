@@ -43,7 +43,7 @@ All the below experiments involves changing main_config.cfg :
 
 3. To run BasicBERT with improved MIP :
 
-   This experiment involves chnaging the training dataset where we can use this : https://drive.google.com/file/d/1Io2PQlL6k1IN1vFOARuqacs4NqP_3tgY/view?usp=sharing
+   This experiment involves changing the training dataset where we can use this : https://drive.google.com/file/d/1Io2PQlL6k1IN1vFOARuqacs4NqP_3tgY/view?usp=sharing
    and run the file :
    ```
    python main.py
@@ -59,7 +59,12 @@ All the below experiments involves changing main_config.cfg :
    This experiment also includes using the training dataset : https://drive.google.com/file/d/1J3wG9bn5bJOphsPpmR4X9BS9eJzGaEm3/view?usp=sharing
    please replace this in data/VUA20 and execute.
    To run the inference, please make sure `run_train=False` and `run_infer=True` with the model at : https://drive.google.com/file/d/1kDvi6ldVi-GWWd1YFlipLoUVTBvordkS/view?usp=drive_link
-   with `use_finetune_path` pointing to the saved model. 
+   with `use_finetune_path` pointing to the saved model.
+
+
+## Saved models and Saved dataset : 
+
+Here is the location for the saved dataset and finetuned models : https://drive.google.com/drive/folders/1RkXznO0N2a_Adf-aipSHXFSc3Wjs6BDn?usp=sharing
 
 
 
