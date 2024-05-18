@@ -46,6 +46,7 @@ All the below experiments involves changing main_config.cfg :
    ```
    python main.py
    ```
+   and use `model_type= MELBERT` in the config with rest of the config with default params. 
    
 4. To run modified SPV :
    
