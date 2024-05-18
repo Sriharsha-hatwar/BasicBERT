@@ -32,10 +32,15 @@ All the below experiments involves changing main_config.cfg :
 1. Running a Vanilla RoBERTA on the dataset :
 
 2. To run Zero-shot with Mistral V0.2 :
+   This involves running the file : zero-shot.py
+    ```
+    python zero-shot.py 
+    ```
+    If you want to change the location of the test dataset, please change it in line 109. 
 
-3. To run BasicBERT with improved MIP :
+4. To run BasicBERT with improved MIP :
 
-4. To run modified SPV :
+5. To run modified SPV :
 
 
 
