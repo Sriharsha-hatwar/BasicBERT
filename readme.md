@@ -29,7 +29,7 @@ All the below experiments involves changing main_config.cfg :
 
 1. Running a Vanilla RoBERTA on the dataset :
    ```
-   python main.py --model_type MELBERT --bert_model roberta-base --learning_rate 5e-5 --seed 41
+   python main.py --model_type RobertaBase --bert_model roberta-base --learning_rate 5e-5 --seed 41
    ```
 
 2. To run Zero-shot with Mistral V0.2 :
