@@ -57,6 +57,7 @@ All the below experiments involves changing main_config.cfg :
    ```
    This experiment also includes using the training dataset : https://drive.google.com/file/d/1J3wG9bn5bJOphsPpmR4X9BS9eJzGaEm3/view?usp=sharing
    please replace this in data/VUA20 and execute.
+   
    To run the inference, please make sure `run_train=False` and `run_infer=True` with the model at : https://drive.google.com/file/d/1kDvi6ldVi-GWWd1YFlipLoUVTBvordkS/view?usp=drive_link
    with `use_finetune_path` pointing to the saved model.
 
